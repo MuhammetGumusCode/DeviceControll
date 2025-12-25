@@ -27,6 +27,9 @@ namespace DevicesControllerApp.Raporlama
         {
             InitializeComponent();
             FillLanguageCombo();
+
+
+            this.Load += Reports_Load_1;
         }
 
 
