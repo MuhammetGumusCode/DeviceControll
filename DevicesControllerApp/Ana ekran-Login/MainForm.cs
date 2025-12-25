@@ -549,8 +549,21 @@ namespace DevicesControllerApp
         {
             Settings st = new Settings();
             st.Dock = DockStyle.Fill;
+            st.DilDegisti += St_DilDegisti;
             splitContainer2.Panel2.Controls.Clear();
             splitContainer2.Panel2.Controls.Add(st);
         }
+
+
+        private void St_DilDegisti(object sender, string yeniDilIsmi)
+        {
+            // 1. MainForm'un kendi dil değişkenini güncelle (Hafızada kalsın)
+            this.secilenDil = yeniDilIsmi;
+
+            // 2. MainForm üzerindeki butonları (Terapi, Hasta Kayıt vb.) yeni dile çevir
+            MetinleriGuncelle(yeniDilIsmi);
+        }
+
+
     }
 }

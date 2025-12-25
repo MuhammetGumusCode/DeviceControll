@@ -4,35 +4,78 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DevicesControllerApp.Ayarlar
 {
     public partial class Settings : UserControl
     {
-        private DatabaseManager dbManager = DatabaseManager.Instance;
+        // MainForm'a haber vermek için bir olay (Event) tanımlıyoruz
+        public event EventHandler<string> DilDegisti;
+
         public Settings()
         {
             InitializeComponent();
         }
 
-
         private void Settings_Load(object sender, EventArgs e)
         {
-            
-        }
+            // ComboBox içini dolduralım (Eğer Designer'da dolu değilse)
+            if (comboBox1.Items.Count == 0)
+            {
+                comboBox1.Items.Add("Türkçe");
+                comboBox1.Items.Add("English");
+            }
 
+            // Mevcut dile göre ComboBox'ı seçili hale getirelim
+            if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "en")
+            {
+                comboBox1.SelectedIndex = 1; // English
+            }
+            else
+            {
+                comboBox1.SelectedIndex = 0; // Türkçe
+            }
+        }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        { 
+        {
+            string secilenDilKodu = "tr";
+            string mainFormIcinDilIsmi = "türkçe";
+
+            // Seçilen index'e göre dili belirle
+            if (comboBox1.SelectedIndex == 1) // English
+            {
+                secilenDilKodu = "en";
+                mainFormIcinDilIsmi = "english";
+            }
+            else // Türkçe
+            {
+                secilenDilKodu = "tr";
+                mainFormIcinDilIsmi = "türkçe";
+            }
+
+            // 1. Uygulamanın arka plan dilini (Culture) değiştir
+            CultureInfo culture = new CultureInfo(secilenDilKodu == "en" ? "en-US" : "tr-TR");
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
+
+            // 2. Ayarlar sayfasındaki yazıları hemen güncelle
+            DiliGuncelle(secilenDilKodu);
+
+            // 3. MainForm'a haber ver (Event'i tetikle)
+            // Bu sayede MainForm'daki butonlar da değişecek
+            DilDegisti?.Invoke(this, mainFormIcinDilIsmi);
         }
 
-
-        private void DiliGuncelle(string lang)
+        // Sizin yazdığınız mevcut DiliGuncelle metodu (Aynen kalıyor, sadece erişim belirleyicisi public olabilir)
+        public void DiliGuncelle(string lang)
         {
             if (lang == "en")
             {
@@ -62,7 +105,6 @@ namespace DevicesControllerApp.Ayarlar
                 // Güvenlik
                 label10.Text = "Session Timeout";
                 label11.Text = "Max Login Attempts";
-              
                 button3.Text = "Save";
 
                 // Veritabanı
@@ -119,7 +161,6 @@ namespace DevicesControllerApp.Ayarlar
 
                 label10.Text = "Oturum Timeout Süreleri";
                 label11.Text = "Maksimum Hatalı Giriş";
-              
                 button3.Text = "Kaydet";
 
                 label15.Text = "Yedekleme Klasörü";
@@ -149,25 +190,5 @@ namespace DevicesControllerApp.Ayarlar
                 button7.Text = "Kaydet";
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
