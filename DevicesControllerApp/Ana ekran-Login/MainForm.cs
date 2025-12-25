@@ -80,34 +80,17 @@ namespace DevicesControllerApp
             MetinleriGuncelle(secilenDil);
         }
         //BU satırdan itibaren veritabanından dil ayarını çekip uygulama kısmı
-      
-        
+
+
         public void MainFormDiliGuncelle(string dilKodu)
         {
-            // Veritabanında "tr" veya "en" diye kayıtlı, ona göre işlem yapıyoruz.
-            // Ayrıca Settings'ten "english" veya "türkçe" kelimesi gelirse onu da kapsayalım.
-
+            // Veritabanından "en" veya "tr" geliyor.
             if (dilKodu == "en" || dilKodu.ToLower() == "english")
             {
-                // --- İNGİLİZCE ---
-                // Yan panellerdeki butonların isimlerini buraya yazmalısın.
-                // Örnek:
-                // btnAnaSayfa.Text = "Home";
-                // btnHastalar.Text = "Patients";
-                // btnAyarlar.Text = "Settings";
-                // btnCikis.Text = "Logout";
-
-                // Eğer buton isimlerini bilmiyorsam senin için genel bir örnek:
-                this.Text = "Device Controller"; // Form Başlığı
+                this.Text = "Device Controller";
             }
             else
             {
-                // --- TÜRKÇE ---
-                // btnAnaSayfa.Text = "Ana Sayfa";
-                // btnHastalar.Text = "Hastalar";
-                // btnAyarlar.Text = "Ayarlar";
-                // btnCikis.Text = "Çıkış";
-
                 this.Text = "Cihaz Kontrolü";
             }
         }
@@ -275,15 +258,32 @@ namespace DevicesControllerApp
 
             System.Data.DataRow row = DatabaseManager.Instance.GetGeneralSettings();
 
+
             if (row != null)
             {
-                // 2. Dil ayarını al ("en" veya "tr" gelecektir)
-                string dbDil = row["application_language"].ToString();
+                // 2. Veritabanındaki kısa kodu al ("en" veya "tr")
+                string dbDilKodu = row["application_language"].ToString();
 
-                // 3. Dili uygula
-                MainFormDiliGuncelle(dbDil);
+                // 3. Bu kısa kodu, JSON yapındaki uzun isme ("english", "türkçe") çevir
+                string jsonDilAnahtari = "türkçe"; // Varsayılan
+                if (dbDilKodu == "en" || dbDilKodu.ToLower() == "english")
+                {
+                    jsonDilAnahtari = "english";
+                }
+                else if (dbDilKodu == "ar" || dbDilKodu.ToLower() == "arabic")
+                {
+                    jsonDilAnahtari = "arapça";
+                }
+
+                // 4. BUTONLARI GÜNCELLE (Eksik olan kritik parça buydu)
+                MetinleriGuncelle(jsonDilAnahtari);
+
+                // 5. Formun kendi değişkenini de güncelle ki hafızada kalsın
+                this.secilenDil = jsonDilAnahtari;
+
+                // 6. Başlığı değiştiren fonksiyonu da çağır
+                MainFormDiliGuncelle(dbDilKodu);
             }
-
 
 
 
