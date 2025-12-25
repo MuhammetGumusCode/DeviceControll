@@ -1,16 +1,12 @@
 ﻿using DevicesControllerApp.Database;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DevicesControllerApp.Ayarlar
 {
@@ -26,16 +22,59 @@ namespace DevicesControllerApp.Ayarlar
 
         private void Settings_Load(object sender, EventArgs e)
         {
-       
+            // Veritabanından ayarları çekiyoruz
+            DataRow row = DatabaseManager.Instance.GetGeneralSettings();
 
-            // Mevcut dile göre ComboBox'ı seçili hale getirelim
-            if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "en")
+            if (row != null)
             {
-                comboBox1.SelectedIndex = 1; // English
+                // 1. DİL AYARI (application_language)
+                string dbDil = row["application_language"].ToString();
+                if (dbDil == "tr" || dbDil.ToLower().Contains("türk"))
+                {
+                    comboBox1.SelectedIndex = 0; // Türkçe
+                }
+                else
+                {
+                    comboBox1.SelectedIndex = 1; // İngilizce
+                }
+
+                // 2. TARİH FORMATI (date_time_format)
+                string dbTarih = row["date_time_format"].ToString();
+                int tarihIndex = comboBox2.FindStringExact(dbTarih);
+                if (tarihIndex != -1)
+                    comboBox2.SelectedIndex = tarihIndex;
+                else
+                    comboBox2.SelectedIndex = 0;
+
+                // 3. UZUNLUK BİRİMİ (length_unit)
+                string dbUzunluk = row["length_unit"].ToString();
+                AkilliSecimYap(comboBox3, dbUzunluk);
+
+                // 4. AĞIRLIK BİRİMİ (weight_unit)
+                string dbAgirlik = row["weight_unit"].ToString();
+                AkilliSecimYap(comboBox4, dbAgirlik);
+
+                // 5. TEMA (theme)
+                string dbTema = row["theme"].ToString();
+                if (dbTema == "Light" || dbTema == "Açık")
+                    comboBox5.SelectedIndex = 0;
+                else
+                    comboBox5.SelectedIndex = 1; // Dark
             }
-            else
+        }
+
+        // AKILLI SEÇİM METODU
+        private void AkilliSecimYap(System.Windows.Forms.ComboBox cb, string aranacakKelime)
+        {
+            if (string.IsNullOrEmpty(aranacakKelime)) return;
+
+            for (int i = 0; i < cb.Items.Count; i++)
             {
-                comboBox1.SelectedIndex = 0; // Türkçe
+                if (cb.Items[i].ToString().ToLower().Contains(aranacakKelime.ToLower()))
+                {
+                    cb.SelectedIndex = i;
+                    return;
+                }
             }
         }
 
@@ -56,18 +95,13 @@ namespace DevicesControllerApp.Ayarlar
                 mainFormIcinDilIsmi = "türkçe";
             }
 
-          
-         
-
-            // 2. Ayarlar sayfasındaki yazıları hemen güncelle
+            // Ayarlar sayfasındaki yazıları güncelle
             DiliGuncelle(secilenDilKodu);
 
-            // 3. MainForm'a haber ver (Event'i tetikle)
-            // Bu sayede MainForm'daki butonlar da değişecek
+            // MainForm'a haber ver
             DilDegisti?.Invoke(this, mainFormIcinDilIsmi);
         }
 
-        // Sizin yazdığınız mevcut DiliGuncelle metodu (Aynen kalıyor, sadece erişim belirleyicisi public olabilir)
         public void DiliGuncelle(string lang)
         {
             if (lang == "en")
@@ -80,7 +114,6 @@ namespace DevicesControllerApp.Ayarlar
                 tabPage5.Text = "Mobile Permissions";
                 tabPage6.Text = "Email Settings";
 
-                // Genel Ayarlar
                 if (UygulamaDiliLbl != null) UygulamaDiliLbl.Text = "Application Language";
                 if (TarihSaatLbl != null) TarihSaatLbl.Text = "Date/Time Format";
                 if (uzunlukBirimiLbl != null) uzunlukBirimiLbl.Text = "Length Unit";
@@ -88,26 +121,23 @@ namespace DevicesControllerApp.Ayarlar
                 if (TemaLbl != null) TemaLbl.Text = "Theme";
                 if (Kaydet1Lbl != null) Kaydet1Lbl.Text = "Save";
 
-                // Cihaz Ayarları
+                // Diğer kontroller (kodunun devamı buraya gelecek, eski kodunda ne varsa)
                 label6.Text = "Min Speed Limits";
                 label8.Text = "Max Speed Limits";
                 label7.Text = "Timeout (ms)";
                 label9.Text = "Auto-Home";
                 button2.Text = "Save";
 
-                // Güvenlik
                 label10.Text = "Session Timeout";
                 label11.Text = "Max Login Attempts";
                 button3.Text = "Save";
 
-                // Veritabanı
                 label15.Text = "Backup Folder";
                 button5.Text = "Select";
                 label14.Text = "Log Cleanup";
                 label13.Text = "Auto Backup";
                 button4.Text = "Save";
 
-                // Mobil
                 label21.Text = "Roles";
                 label28.Text = "Mobile App Permissions";
                 label22.Text = "Admin";
@@ -120,7 +150,6 @@ namespace DevicesControllerApp.Ayarlar
                 label29.Text = "Weight Reduction";
                 button8.Text = "Save";
 
-                // E-Posta
                 label16.Text = "SMTP Server";
                 label17.Text = "Sender Email";
                 label18.Text = "Password";

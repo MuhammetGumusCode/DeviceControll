@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.TarihSaatLbl = new System.Windows.Forms.Label();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.TemaLbl = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
@@ -38,6 +40,7 @@
             this.uzunlukBirimiLbl = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.UygulamaDiliLbl = new System.Windows.Forms.Label();
+            this.Kaydet1Lbl = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -47,7 +50,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
@@ -94,11 +99,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.TarihSaatLbl = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.Kaydet1Lbl = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -149,6 +149,29 @@
             this.tabPage1.Size = new System.Drawing.Size(792, 421);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Genel Ayarlar";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "dd.MM.yyyy",
+            "MM/dd/yyyy",
+            "yyyy-MM-dd"});
+            this.comboBox2.Location = new System.Drawing.Point(261, 158);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 24);
+            this.comboBox2.TabIndex = 13;
+            // 
+            // TarihSaatLbl
+            // 
+            this.TarihSaatLbl.AutoSize = true;
+            this.TarihSaatLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.TarihSaatLbl.Location = new System.Drawing.Point(22, 162);
+            this.TarihSaatLbl.Name = "TarihSaatLbl";
+            this.TarihSaatLbl.Size = new System.Drawing.Size(96, 20);
+            this.TarihSaatLbl.TabIndex = 12;
+            this.TarihSaatLbl.Text = "Tarih/Saat";
             // 
             // comboBox5
             // 
@@ -240,6 +263,15 @@
             this.UygulamaDiliLbl.Size = new System.Drawing.Size(126, 20);
             this.UygulamaDiliLbl.TabIndex = 2;
             this.UygulamaDiliLbl.Text = "Uygulama Dili";
+            // 
+            // Kaydet1Lbl
+            // 
+            this.Kaydet1Lbl.Location = new System.Drawing.Point(538, 309);
+            this.Kaydet1Lbl.Name = "Kaydet1Lbl";
+            this.Kaydet1Lbl.Size = new System.Drawing.Size(91, 28);
+            this.Kaydet1Lbl.TabIndex = 0;
+            this.Kaydet1Lbl.Text = "Kaydet";
+            this.Kaydet1Lbl.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -334,6 +366,15 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Minumum Hız Limitleri";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(330, 320);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(103, 32);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "Kaydet";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.LightCoral;
@@ -347,6 +388,15 @@
             this.tabPage3.Size = new System.Drawing.Size(792, 421);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Güvenlik Ayarları";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(561, 161);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(126, 43);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Kaydet";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // numericUpDown5
             // 
@@ -806,56 +856,6 @@
             this.label16.Size = new System.Drawing.Size(147, 20);
             this.label16.TabIndex = 0;
             this.label16.Text = "SMTP Sunucusu";
-            // 
-            // TarihSaatLbl
-            // 
-            this.TarihSaatLbl.AutoSize = true;
-            this.TarihSaatLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.TarihSaatLbl.Location = new System.Drawing.Point(22, 162);
-            this.TarihSaatLbl.Name = "TarihSaatLbl";
-            this.TarihSaatLbl.Size = new System.Drawing.Size(96, 20);
-            this.TarihSaatLbl.TabIndex = 12;
-            this.TarihSaatLbl.Text = "Tarih/Saat";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "dd.MM.yyyy",
-            "MM/dd/yyyy",
-            "yyyy-MM-dd"});
-            this.comboBox2.Location = new System.Drawing.Point(261, 158);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 24);
-            this.comboBox2.TabIndex = 13;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(561, 161);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(126, 43);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Kaydet";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(330, 320);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 32);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Kaydet";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // Kaydet1Lbl
-            // 
-            this.Kaydet1Lbl.Location = new System.Drawing.Point(481, 356);
-            this.Kaydet1Lbl.Name = "Kaydet1Lbl";
-            this.Kaydet1Lbl.Size = new System.Drawing.Size(91, 28);
-            this.Kaydet1Lbl.TabIndex = 0;
-            this.Kaydet1Lbl.Text = "Kaydet";
-            this.Kaydet1Lbl.UseVisualStyleBackColor = true;
             // 
             // Settings
             // 
