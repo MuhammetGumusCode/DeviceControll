@@ -25,9 +25,12 @@ namespace DevicesControllerApp.Servis
         private int _currentLanguageId = 0;
 
         public Service()
-        {
+{
             InitializeComponent();
 
+
+
+            this.Load += Service_Load;
             // Dil seçimi ComboBox olayını bağla
             if (cmbDilSecimi != null)
             {
@@ -307,6 +310,15 @@ namespace DevicesControllerApp.Servis
 
         private void Service_Load(object sender, EventArgs e)
         {
+            string format = DatabaseManager.Instance.GetCurrentDateFormat();
+            dtpLogBaslangic.Format = DateTimePickerFormat.Custom;
+            dtpLogBaslangic.CustomFormat = format;
+            dtpLogBitis.Format = DateTimePickerFormat.Custom;
+            dtpLogBitis.CustomFormat = format;
+
+
+
+
             // Güvenlik kontrolü
             if (currentUserRole != "Service")
             {
@@ -376,6 +388,11 @@ namespace DevicesControllerApp.Servis
         private void lblTotalTime_Click(object sender, EventArgs e) { }
         private void lblDeviceStatus_Click(object sender, EventArgs e) { }
         private void txtServoDistance_TextChanged(object sender, EventArgs e) { }
+
+        private void btnServoMove_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

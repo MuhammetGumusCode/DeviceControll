@@ -99,10 +99,9 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft PhagsPa", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(477, 555);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(636, 683);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(178, 25);
+            this.label5.Size = new System.Drawing.Size(237, 31);
             this.label5.TabIndex = 172;
             this.label5.Text = "Şehir Seç";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -111,12 +110,12 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(20, 2);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView1.Location = new System.Drawing.Point(27, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1139, 224);
+            this.dataGridView1.Size = new System.Drawing.Size(1519, 276);
             this.dataGridView1.TabIndex = 171;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -139,24 +138,24 @@
             "8",
             "9",
             "10"});
-            this.comboBox_sehir.Location = new System.Drawing.Point(659, 559);
-            this.comboBox_sehir.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox_sehir.Location = new System.Drawing.Point(879, 688);
+            this.comboBox_sehir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox_sehir.Name = "comboBox_sehir";
-            this.comboBox_sehir.Size = new System.Drawing.Size(120, 21);
+            this.comboBox_sehir.Size = new System.Drawing.Size(159, 24);
             this.comboBox_sehir.TabIndex = 170;
             // 
             // numericUpDownbacak
             // 
             this.numericUpDownbacak.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDownbacak.Location = new System.Drawing.Point(287, 524);
-            this.numericUpDownbacak.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDownbacak.Location = new System.Drawing.Point(383, 645);
+            this.numericUpDownbacak.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDownbacak.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
             this.numericUpDownbacak.Name = "numericUpDownbacak";
-            this.numericUpDownbacak.Size = new System.Drawing.Size(163, 23);
+            this.numericUpDownbacak.Size = new System.Drawing.Size(217, 27);
             this.numericUpDownbacak.TabIndex = 169;
             this.numericUpDownbacak.Value = new decimal(new int[] {
             41,
@@ -167,12 +166,11 @@
             // label27
             // 
             this.label27.Font = new System.Drawing.Font("Microsoft PhagsPa", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(7, 524);
-            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label27.Location = new System.Drawing.Point(-6, 645);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(274, 25);
+            this.label27.Size = new System.Drawing.Size(365, 31);
             this.label27.TabIndex = 168;
-            this.label27.Text = "bacak boyu";
+            this.label27.Text = "bacak boyu(cm)";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // comboBox1
@@ -181,9 +179,10 @@
             this.comboBox1.Items.AddRange(new object[] {
             "Türkçe",
             "English"});
-            this.comboBox1.Location = new System.Drawing.Point(1002, 264);
+            this.comboBox1.Location = new System.Drawing.Point(1336, 325);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.Size = new System.Drawing.Size(160, 24);
             this.comboBox1.TabIndex = 167;
             this.comboBox1.Text = "Dil / Language";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_2);
@@ -192,10 +191,10 @@
             // 
             this.button_lookAll.ImageKey = "table.png";
             this.button_lookAll.ImageList = this.ımageList1;
-            this.button_lookAll.Location = new System.Drawing.Point(1021, 720);
-            this.button_lookAll.Margin = new System.Windows.Forms.Padding(2);
+            this.button_lookAll.Location = new System.Drawing.Point(1361, 886);
+            this.button_lookAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_lookAll.Name = "button_lookAll";
-            this.button_lookAll.Size = new System.Drawing.Size(180, 50);
+            this.button_lookAll.Size = new System.Drawing.Size(240, 62);
             this.button_lookAll.TabIndex = 166;
             this.button_lookAll.Text = "Hepsine Bak";
             this.button_lookAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -218,10 +217,10 @@
             // 
             this.button_clear.ImageKey = "clear-format.png";
             this.button_clear.ImageList = this.ımageList1;
-            this.button_clear.Location = new System.Drawing.Point(618, 720);
-            this.button_clear.Margin = new System.Windows.Forms.Padding(2);
+            this.button_clear.Location = new System.Drawing.Point(824, 886);
+            this.button_clear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_clear.Name = "button_clear";
-            this.button_clear.Size = new System.Drawing.Size(180, 50);
+            this.button_clear.Size = new System.Drawing.Size(240, 62);
             this.button_clear.TabIndex = 165;
             this.button_clear.Text = "Temizle";
             this.button_clear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -233,10 +232,10 @@
             // 
             this.button_search.ImageKey = "search.png";
             this.button_search.ImageList = this.ımageList1;
-            this.button_search.Location = new System.Drawing.Point(821, 720);
-            this.button_search.Margin = new System.Windows.Forms.Padding(2);
+            this.button_search.Location = new System.Drawing.Point(1095, 886);
+            this.button_search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_search.Name = "button_search";
-            this.button_search.Size = new System.Drawing.Size(180, 50);
+            this.button_search.Size = new System.Drawing.Size(240, 62);
             this.button_search.TabIndex = 164;
             this.button_search.Text = "Ara";
             this.button_search.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -248,10 +247,10 @@
             // 
             this.button_update.ImageKey = "sync.png";
             this.button_update.ImageList = this.ımageList1;
-            this.button_update.Location = new System.Drawing.Point(418, 720);
-            this.button_update.Margin = new System.Windows.Forms.Padding(2);
+            this.button_update.Location = new System.Drawing.Point(557, 886);
+            this.button_update.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_update.Name = "button_update";
-            this.button_update.Size = new System.Drawing.Size(180, 50);
+            this.button_update.Size = new System.Drawing.Size(240, 62);
             this.button_update.TabIndex = 163;
             this.button_update.Text = "Güncelle";
             this.button_update.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -263,10 +262,10 @@
             // 
             this.button_remove.ImageKey = "bin.png";
             this.button_remove.ImageList = this.ımageList1;
-            this.button_remove.Location = new System.Drawing.Point(218, 720);
-            this.button_remove.Margin = new System.Windows.Forms.Padding(2);
+            this.button_remove.Location = new System.Drawing.Point(291, 886);
+            this.button_remove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_remove.Name = "button_remove";
-            this.button_remove.Size = new System.Drawing.Size(180, 50);
+            this.button_remove.Size = new System.Drawing.Size(240, 62);
             this.button_remove.TabIndex = 162;
             this.button_remove.Text = "Sil";
             this.button_remove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -277,44 +276,44 @@
             // textBox_teshis
             // 
             this.textBox_teshis.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox_teshis.Location = new System.Drawing.Point(659, 261);
-            this.textBox_teshis.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_teshis.Location = new System.Drawing.Point(879, 321);
+            this.textBox_teshis.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_teshis.Multiline = true;
             this.textBox_teshis.Name = "textBox_teshis";
-            this.textBox_teshis.Size = new System.Drawing.Size(315, 57);
+            this.textBox_teshis.Size = new System.Drawing.Size(419, 69);
             this.textBox_teshis.TabIndex = 161;
             // 
             // dateTimePicker_tedaviBas
             // 
             this.dateTimePicker_tedaviBas.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.dateTimePicker_tedaviBas.Location = new System.Drawing.Point(659, 598);
-            this.dateTimePicker_tedaviBas.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePicker_tedaviBas.Location = new System.Drawing.Point(879, 736);
+            this.dateTimePicker_tedaviBas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateTimePicker_tedaviBas.Name = "dateTimePicker_tedaviBas";
-            this.dateTimePicker_tedaviBas.Size = new System.Drawing.Size(188, 23);
+            this.dateTimePicker_tedaviBas.Size = new System.Drawing.Size(249, 27);
             this.dateTimePicker_tedaviBas.TabIndex = 160;
             // 
             // textBox_teshisacikalma
             // 
             this.textBox_teshisacikalma.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox_teshisacikalma.Location = new System.Drawing.Point(659, 333);
-            this.textBox_teshisacikalma.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_teshisacikalma.Location = new System.Drawing.Point(879, 410);
+            this.textBox_teshisacikalma.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_teshisacikalma.Multiline = true;
             this.textBox_teshisacikalma.Name = "textBox_teshisacikalma";
-            this.textBox_teshisacikalma.Size = new System.Drawing.Size(315, 115);
+            this.textBox_teshisacikalma.Size = new System.Drawing.Size(419, 141);
             this.textBox_teshisacikalma.TabIndex = 159;
             // 
             // numericUpDown_diz
             // 
             this.numericUpDown_diz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown_diz.Location = new System.Drawing.Point(287, 598);
-            this.numericUpDown_diz.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDown_diz.Location = new System.Drawing.Point(383, 736);
+            this.numericUpDown_diz.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown_diz.Maximum = new decimal(new int[] {
             50000,
             0,
             0,
             0});
             this.numericUpDown_diz.Name = "numericUpDown_diz";
-            this.numericUpDown_diz.Size = new System.Drawing.Size(163, 23);
+            this.numericUpDown_diz.Size = new System.Drawing.Size(217, 27);
             this.numericUpDown_diz.TabIndex = 158;
             this.numericUpDown_diz.Value = new decimal(new int[] {
             6,
@@ -325,15 +324,15 @@
             // numericUpDown_kalca
             // 
             this.numericUpDown_kalca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown_kalca.Location = new System.Drawing.Point(287, 561);
-            this.numericUpDown_kalca.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDown_kalca.Location = new System.Drawing.Point(383, 690);
+            this.numericUpDown_kalca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown_kalca.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
             this.numericUpDown_kalca.Name = "numericUpDown_kalca";
-            this.numericUpDown_kalca.Size = new System.Drawing.Size(163, 23);
+            this.numericUpDown_kalca.Size = new System.Drawing.Size(217, 27);
             this.numericUpDown_kalca.TabIndex = 157;
             this.numericUpDown_kalca.Value = new decimal(new int[] {
             6,
@@ -344,8 +343,8 @@
             // numericUpDown_ayak
             // 
             this.numericUpDown_ayak.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown_ayak.Location = new System.Drawing.Point(287, 629);
-            this.numericUpDown_ayak.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDown_ayak.Location = new System.Drawing.Point(383, 774);
+            this.numericUpDown_ayak.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown_ayak.Maximum = new decimal(new int[] {
             50000,
             0,
@@ -357,7 +356,7 @@
             0,
             0});
             this.numericUpDown_ayak.Name = "numericUpDown_ayak";
-            this.numericUpDown_ayak.Size = new System.Drawing.Size(163, 23);
+            this.numericUpDown_ayak.Size = new System.Drawing.Size(217, 27);
             this.numericUpDown_ayak.TabIndex = 156;
             this.numericUpDown_ayak.Value = new decimal(new int[] {
             41,
@@ -368,8 +367,8 @@
             // numericUpDown_kilo
             // 
             this.numericUpDown_kilo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown_kilo.Location = new System.Drawing.Point(287, 488);
-            this.numericUpDown_kilo.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDown_kilo.Location = new System.Drawing.Point(383, 601);
+            this.numericUpDown_kilo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown_kilo.Maximum = new decimal(new int[] {
             400,
             0,
@@ -381,7 +380,7 @@
             0,
             0});
             this.numericUpDown_kilo.Name = "numericUpDown_kilo";
-            this.numericUpDown_kilo.Size = new System.Drawing.Size(163, 23);
+            this.numericUpDown_kilo.Size = new System.Drawing.Size(217, 27);
             this.numericUpDown_kilo.TabIndex = 155;
             this.numericUpDown_kilo.Value = new decimal(new int[] {
             50,
@@ -392,8 +391,8 @@
             // numericUpDown_boy
             // 
             this.numericUpDown_boy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.numericUpDown_boy.Location = new System.Drawing.Point(287, 450);
-            this.numericUpDown_boy.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDown_boy.Location = new System.Drawing.Point(383, 554);
+            this.numericUpDown_boy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown_boy.Maximum = new decimal(new int[] {
             400,
             0,
@@ -405,7 +404,7 @@
             0,
             0});
             this.numericUpDown_boy.Name = "numericUpDown_boy";
-            this.numericUpDown_boy.Size = new System.Drawing.Size(163, 23);
+            this.numericUpDown_boy.Size = new System.Drawing.Size(217, 27);
             this.numericUpDown_boy.TabIndex = 154;
             this.numericUpDown_boy.Value = new decimal(new int[] {
             100,
@@ -416,30 +415,30 @@
             // textBox_email
             // 
             this.textBox_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox_email.Location = new System.Drawing.Point(659, 668);
-            this.textBox_email.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_email.Location = new System.Drawing.Point(879, 822);
+            this.textBox_email.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_email.Name = "textBox_email";
-            this.textBox_email.Size = new System.Drawing.Size(164, 24);
+            this.textBox_email.Size = new System.Drawing.Size(217, 28);
             this.textBox_email.TabIndex = 153;
             // 
             // maskedTextBox_phone
             // 
             this.maskedTextBox_phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.maskedTextBox_phone.Location = new System.Drawing.Point(659, 632);
-            this.maskedTextBox_phone.Margin = new System.Windows.Forms.Padding(2);
+            this.maskedTextBox_phone.Location = new System.Drawing.Point(879, 778);
+            this.maskedTextBox_phone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.maskedTextBox_phone.Mask = "(000) 000-0000";
             this.maskedTextBox_phone.Name = "maskedTextBox_phone";
-            this.maskedTextBox_phone.Size = new System.Drawing.Size(164, 24);
+            this.maskedTextBox_phone.Size = new System.Drawing.Size(217, 28);
             this.maskedTextBox_phone.TabIndex = 152;
             // 
             // textBox_adress
             // 
             this.textBox_adress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox_adress.Location = new System.Drawing.Point(659, 462);
-            this.textBox_adress.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_adress.Location = new System.Drawing.Point(879, 569);
+            this.textBox_adress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_adress.Multiline = true;
             this.textBox_adress.Name = "textBox_adress";
-            this.textBox_adress.Size = new System.Drawing.Size(315, 78);
+            this.textBox_adress.Size = new System.Drawing.Size(419, 95);
             this.textBox_adress.TabIndex = 151;
             this.textBox_adress.TextChanged += new System.EventHandler(this.textBox_adress_TextChanged);
             // 
@@ -447,10 +446,10 @@
             // 
             this.radioButton_man.AutoSize = true;
             this.radioButton_man.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.radioButton_man.Location = new System.Drawing.Point(287, 404);
-            this.radioButton_man.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton_man.Location = new System.Drawing.Point(383, 497);
+            this.radioButton_man.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton_man.Name = "radioButton_man";
-            this.radioButton_man.Size = new System.Drawing.Size(73, 24);
+            this.radioButton_man.Size = new System.Drawing.Size(88, 29);
             this.radioButton_man.TabIndex = 150;
             this.radioButton_man.TabStop = true;
             this.radioButton_man.Text = "Erkek";
@@ -460,10 +459,10 @@
             // 
             this.radioButton_woman.AutoSize = true;
             this.radioButton_woman.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.radioButton_woman.Location = new System.Drawing.Point(364, 403);
-            this.radioButton_woman.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton_woman.Location = new System.Drawing.Point(485, 496);
+            this.radioButton_woman.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton_woman.Name = "radioButton_woman";
-            this.radioButton_woman.Size = new System.Drawing.Size(72, 24);
+            this.radioButton_woman.Size = new System.Drawing.Size(89, 29);
             this.radioButton_woman.TabIndex = 149;
             this.radioButton_woman.TabStop = true;
             this.radioButton_woman.Text = "Kadın";
@@ -472,19 +471,18 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(287, 367);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePicker1.Location = new System.Drawing.Point(383, 452);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(149, 23);
+            this.dateTimePicker1.Size = new System.Drawing.Size(197, 27);
             this.dateTimePicker1.TabIndex = 148;
             // 
             // label30
             // 
             this.label30.Font = new System.Drawing.Font("Tahoma", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label30.Location = new System.Drawing.Point(15, 258);
-            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label30.Location = new System.Drawing.Point(20, 318);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(268, 25);
+            this.label30.Size = new System.Drawing.Size(357, 31);
             this.label30.TabIndex = 147;
             this.label30.Text = " Tc Kimlik Numarası :";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -493,19 +491,17 @@
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Microsoft PhagsPa", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(865, 408);
-            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label29.Location = new System.Drawing.Point(1153, 502);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(0, 25);
+            this.label29.Size = new System.Drawing.Size(0, 31);
             this.label29.TabIndex = 146;
             // 
             // label24
             // 
             this.label24.Font = new System.Drawing.Font("Microsoft PhagsPa", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(454, 258);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Location = new System.Drawing.Point(605, 318);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(200, 25);
+            this.label24.Size = new System.Drawing.Size(267, 31);
             this.label24.TabIndex = 145;
             this.label24.Text = "Teşhis";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -513,10 +509,9 @@
             // label23
             // 
             this.label23.Font = new System.Drawing.Font("Microsoft PhagsPa", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(463, 594);
-            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label23.Location = new System.Drawing.Point(617, 731);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(195, 25);
+            this.label23.Size = new System.Drawing.Size(260, 31);
             this.label23.TabIndex = 144;
             this.label23.Text = " Tedavi Başlangıcı:";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -524,10 +519,9 @@
             // label22
             // 
             this.label22.Font = new System.Drawing.Font("Microsoft PhagsPa", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(472, 333);
-            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Location = new System.Drawing.Point(629, 410);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(183, 76);
+            this.label22.Size = new System.Drawing.Size(244, 94);
             this.label22.TabIndex = 143;
             this.label22.Text = "Teşhis Açıklaması:";
             this.label22.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -535,10 +529,9 @@
             // label21
             // 
             this.label21.Font = new System.Drawing.Font("Microsoft PhagsPa", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(2, 598);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Location = new System.Drawing.Point(3, 736);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(276, 25);
+            this.label21.Size = new System.Drawing.Size(368, 31);
             this.label21.TabIndex = 142;
             this.label21.Text = "Diz-Topuk Mesafesi(cm):";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -546,10 +539,9 @@
             // label20
             // 
             this.label20.Font = new System.Drawing.Font("Microsoft PhagsPa", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(12, 561);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Location = new System.Drawing.Point(16, 690);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(266, 25);
+            this.label20.Size = new System.Drawing.Size(355, 31);
             this.label20.TabIndex = 141;
             this.label20.Text = " Kalça-Diz Mesafesi(cm):";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -558,69 +550,62 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label19.Location = new System.Drawing.Point(1070, 362);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Location = new System.Drawing.Point(1427, 446);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(0, 22);
+            this.label19.Size = new System.Drawing.Size(0, 27);
             this.label19.TabIndex = 140;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label18.Location = new System.Drawing.Point(1070, 409);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Location = new System.Drawing.Point(1427, 503);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(0, 22);
+            this.label18.Size = new System.Drawing.Size(0, 27);
             this.label18.TabIndex = 139;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label17.Location = new System.Drawing.Point(986, 333);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Location = new System.Drawing.Point(1315, 410);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(0, 22);
+            this.label17.Size = new System.Drawing.Size(0, 27);
             this.label17.TabIndex = 138;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label16.Location = new System.Drawing.Point(1070, 329);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Location = new System.Drawing.Point(1427, 405);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(0, 22);
+            this.label16.Size = new System.Drawing.Size(0, 27);
             this.label16.TabIndex = 137;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label15.Location = new System.Drawing.Point(961, 331);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Location = new System.Drawing.Point(1281, 407);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(0, 22);
+            this.label15.Size = new System.Drawing.Size(0, 27);
             this.label15.TabIndex = 136;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label14.Location = new System.Drawing.Point(507, 462);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Location = new System.Drawing.Point(676, 569);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(0, 22);
+            this.label14.Size = new System.Drawing.Size(0, 27);
             this.label14.TabIndex = 135;
             // 
             // label13
             // 
             this.label13.Font = new System.Drawing.Font("Microsoft PhagsPa", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(12, 629);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Location = new System.Drawing.Point(16, 774);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(266, 25);
+            this.label13.Size = new System.Drawing.Size(355, 31);
             this.label13.TabIndex = 134;
             this.label13.Text = " Ayak Numarası(cm):";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -628,10 +613,9 @@
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Microsoft PhagsPa", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(70, 486);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Location = new System.Drawing.Point(93, 598);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(211, 25);
+            this.label12.Size = new System.Drawing.Size(281, 31);
             this.label12.TabIndex = 133;
             this.label12.Text = " Kilo(kg):";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -639,10 +623,9 @@
             // label11
             // 
             this.label11.Font = new System.Drawing.Font("Microsoft PhagsPa", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(65, 448);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Location = new System.Drawing.Point(87, 551);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(216, 25);
+            this.label11.Size = new System.Drawing.Size(288, 31);
             this.label11.TabIndex = 132;
             this.label11.Text = " Boy(cm):";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -650,10 +633,9 @@
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Tahoma", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label9.Location = new System.Drawing.Point(51, 403);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Location = new System.Drawing.Point(68, 496);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(230, 25);
+            this.label9.Size = new System.Drawing.Size(307, 31);
             this.label9.TabIndex = 131;
             this.label9.Text = " Cinsiyet:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -661,10 +643,9 @@
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("Tahoma", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label8.Location = new System.Drawing.Point(458, 462);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(611, 569);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(196, 25);
+            this.label8.Size = new System.Drawing.Size(261, 31);
             this.label8.TabIndex = 130;
             this.label8.Text = " Adresi:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -673,10 +654,9 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Tahoma", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label7.Location = new System.Drawing.Point(459, 630);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(612, 775);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(196, 25);
+            this.label7.Size = new System.Drawing.Size(261, 31);
             this.label7.TabIndex = 129;
             this.label7.Text = " Telefon Numarası:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -684,10 +664,9 @@
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Tahoma", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(464, 667);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(619, 821);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(191, 25);
+            this.label6.Size = new System.Drawing.Size(255, 31);
             this.label6.TabIndex = 128;
             this.label6.Text = " Mail:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -695,10 +674,9 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Tahoma", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(71, 293);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(95, 361);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(210, 25);
+            this.label4.Size = new System.Drawing.Size(280, 31);
             this.label4.TabIndex = 127;
             this.label4.Text = " Adı:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -706,10 +684,9 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Tahoma", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(73, 329);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(97, 405);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(210, 25);
+            this.label3.Size = new System.Drawing.Size(280, 31);
             this.label3.TabIndex = 126;
             this.label3.Text = " Soyadı:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -717,10 +694,9 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Tahoma", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(58, 367);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(77, 452);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(225, 25);
+            this.label2.Size = new System.Drawing.Size(300, 31);
             this.label2.TabIndex = 125;
             this.label2.Text = " Doğum Tarihi:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -728,39 +704,39 @@
             // textBox_surname
             // 
             this.textBox_surname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox_surname.Location = new System.Drawing.Point(287, 331);
-            this.textBox_surname.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_surname.Location = new System.Drawing.Point(383, 407);
+            this.textBox_surname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_surname.Name = "textBox_surname";
-            this.textBox_surname.Size = new System.Drawing.Size(149, 24);
+            this.textBox_surname.Size = new System.Drawing.Size(197, 28);
             this.textBox_surname.TabIndex = 124;
             // 
             // textBox_name
             // 
             this.textBox_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox_name.Location = new System.Drawing.Point(287, 293);
-            this.textBox_name.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_name.Location = new System.Drawing.Point(383, 361);
+            this.textBox_name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_name.Name = "textBox_name";
-            this.textBox_name.Size = new System.Drawing.Size(149, 24);
+            this.textBox_name.Size = new System.Drawing.Size(197, 28);
             this.textBox_name.TabIndex = 123;
             // 
             // tc_no
             // 
             this.tc_no.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tc_no.Location = new System.Drawing.Point(287, 258);
-            this.tc_no.Margin = new System.Windows.Forms.Padding(2);
+            this.tc_no.Location = new System.Drawing.Point(383, 318);
+            this.tc_no.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tc_no.Mask = "00000000000";
             this.tc_no.Name = "tc_no";
-            this.tc_no.Size = new System.Drawing.Size(149, 24);
+            this.tc_no.Size = new System.Drawing.Size(197, 28);
             this.tc_no.TabIndex = 122;
             // 
             // btn_Create
             // 
             this.btn_Create.ImageKey = "diskette.png";
             this.btn_Create.ImageList = this.ımageList1;
-            this.btn_Create.Location = new System.Drawing.Point(19, 720);
-            this.btn_Create.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Create.Location = new System.Drawing.Point(25, 886);
+            this.btn_Create.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Create.Name = "btn_Create";
-            this.btn_Create.Size = new System.Drawing.Size(180, 50);
+            this.btn_Create.Size = new System.Drawing.Size(240, 62);
             this.btn_Create.TabIndex = 121;
             this.btn_Create.Text = "Kaydet";
             this.btn_Create.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -771,14 +747,15 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(55, 8);
+            this.panel1.Location = new System.Drawing.Point(73, 10);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1200, 240);
+            this.panel1.Size = new System.Drawing.Size(1600, 295);
             this.panel1.TabIndex = 173;
             // 
             // PatientRegistration
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.Controls.Add(this.panel1);
@@ -833,8 +810,9 @@
             this.Controls.Add(this.textBox_name);
             this.Controls.Add(this.tc_no);
             this.Controls.Add(this.btn_Create);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "PatientRegistration";
-            this.Size = new System.Drawing.Size(1678, 982);
+            this.Size = new System.Drawing.Size(2237, 1209);
             this.Load += new System.EventHandler(this.PatientRegistration_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

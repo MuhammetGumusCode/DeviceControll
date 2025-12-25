@@ -1035,9 +1035,57 @@ namespace DevicesControllerApp.Database
             // Eğer bir hata olursa veya veri yoksa varsayılan olarak bunu döndür
             return "dd.MM.yyyy";
         }
+        
 
 
 
+
+
+        // --- UZUNLUK BİRİMİ ÇEVİRİCİSİ ---
+        // isBodyMeasurement: TRUE ise Vücut ölçüsü (DB'de CM), FALSE ise Yürüme Mesafesi (DB'de Metre)
+        public decimal GetLengthMultiplier(bool isBodyMeasurement)
+        {
+            try
+            {
+                // 1. Ayarı Çek
+                DataRow row = GetGeneralSettings();
+                if (row == null) return 1; // Hata varsa değiştirme
+
+                string unit = row["length_unit"].ToString().ToLower(); // "metre", "santimetre" vb.
+
+                // 2. Çarpanı Belirle
+                if (unit.Contains("metre") && !unit.Contains("santi") && !unit.Contains("mili"))
+                {
+                    // Kullanıcı "Metre" istiyor
+                    if (isBodyMeasurement) return 0.01m; // CM -> Metre (Örn: 180 -> 1.80)
+                    else return 1.0m;                    // Metre -> Metre (Değişiklik yok)
+                }
+                else if (unit.Contains("santi") || unit.Contains("cm"))
+                {
+                    // Kullanıcı "Santimetre" istiyor
+                    if (isBodyMeasurement) return 1.0m;  // CM -> CM (Değişiklik yok)
+                    else return 100.0m;                  // Metre -> CM (Örn: 5m -> 500cm)
+                }
+
+                // Varsayılan (Değişiklik yok)
+                return 1.0m;
+            }
+            catch { return 1.0m; }
+        }
+
+        // Birimin adını döndürür (Örn: "m", "cm")
+        public string GetLengthUnitLabel()
+        {
+            try
+            {
+                string unit = GetGeneralSettings()["length_unit"].ToString().ToLower();
+                if (unit.Contains("metre") && !unit.Contains("santi")) return "m";
+                if (unit.Contains("santi")) return "cm";
+                if (unit.Contains("mili")) return "mm";
+                return "birim";
+            }
+            catch { return ""; }
+        }
 
 
 

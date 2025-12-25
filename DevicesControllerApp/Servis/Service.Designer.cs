@@ -259,6 +259,7 @@
             this.btnServoMove.TabIndex = 4;
             this.btnServoMove.Text = "Servo 1 Hareket Başlat";
             this.btnServoMove.UseVisualStyleBackColor = true;
+            this.btnServoMove.Click += new System.EventHandler(this.btnServoMove_Click_1);
             // 
             // txtServoDistance
             // 
@@ -282,9 +283,9 @@
             this.lblServoDistance.AutoSize = true;
             this.lblServoDistance.Location = new System.Drawing.Point(16, 131);
             this.lblServoDistance.Name = "lblServoDistance";
-            this.lblServoDistance.Size = new System.Drawing.Size(77, 24);
+            this.lblServoDistance.Size = new System.Drawing.Size(117, 24);
             this.lblServoDistance.TabIndex = 1;
-            this.lblServoDistance.Text = "Mesafe:";
+            this.lblServoDistance.Text = "Mesafe(cm):";
             // 
             // lblServoSpeed
             // 
