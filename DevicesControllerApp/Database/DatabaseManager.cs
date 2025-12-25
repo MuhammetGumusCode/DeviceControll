@@ -942,6 +942,61 @@ namespace DevicesControllerApp.Database
 
 
 
+        // 1. GENEL AYARLAR (general_settings tablosu)
+        public DataRow GetGeneralSettings()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                if (OpenConnection())
+                {
+                    // Tablo boşsa varsayılan kayıt oluştur (Patlamaması için önlem)
+                    using (var checkCmd = new NpgsqlCommand("SELECT COUNT(*) FROM general_settings", _connection))
+                    {
+                        long count = (long)checkCmd.ExecuteScalar();
+                        if (count == 0)
+                        {
+                            using (var insertCmd = new NpgsqlCommand("INSERT INTO general_settings (application_language, theme) VALUES ('tr', 'Light')", _connection))
+                                insertCmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    using (NpgsqlDataAdapter da = new NpgsqlDataAdapter("SELECT * FROM general_settings ORDER BY id ASC LIMIT 1", _connection))
+                    {
+                        da.Fill(dt);
+                    }
+                }
+            }
+            catch { /* Hata yönetimi */ }
+            // finally { CloseConnection(); } // Bağlantıyı açık tutmak istiyorsan burayı kapat
+            return dt.Rows.Count > 0 ? dt.Rows[0] : null;
+        }
+
+
+        public bool UpdateGeneralSettings(string lang, string dateFmt, string lenUnit, string weightUnit, string theme)
+        {
+            try
+            {
+                if (OpenConnection())
+                {
+                    string sql = @"UPDATE general_settings SET 
+                           application_language=@p1, date_time_format=@p2, length_unit=@p3, weight_unit=@p4, theme=@p5 
+                           WHERE id = (SELECT id FROM general_settings LIMIT 1)";
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(sql, _connection))
+                    {
+                        cmd.Parameters.AddWithValue("@p1", lang);
+                        cmd.Parameters.AddWithValue("@p2", dateFmt);
+                        cmd.Parameters.AddWithValue("@p3", lenUnit);
+                        cmd.Parameters.AddWithValue("@p4", weightUnit);
+                        cmd.Parameters.AddWithValue("@p5", theme);
+                        return cmd.ExecuteNonQuery() > 0;
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex) { MessageBox.Show("Hata: " + ex.Message); return false; }
+        }
+
 
 
 

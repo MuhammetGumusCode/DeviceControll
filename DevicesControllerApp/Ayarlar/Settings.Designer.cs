@@ -38,7 +38,6 @@
             this.uzunlukBirimiLbl = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.UygulamaDiliLbl = new System.Windows.Forms.Label();
-            this.Kaydet1Lbl = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -48,9 +47,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
@@ -99,6 +96,9 @@
             this.label16 = new System.Windows.Forms.Label();
             this.TarihSaatLbl = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.Kaydet1Lbl = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -177,8 +177,8 @@
             this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Items.AddRange(new object[] {
-            "Türkçe ",
-            "İngilizce"});
+            "Kilogram (kg)",
+            "Gram (g)"});
             this.comboBox4.Location = new System.Drawing.Point(646, 162);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(121, 24);
@@ -199,8 +199,10 @@
             this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
-            "Türkçe ",
-            "İngilizce"});
+            "Kilometre(km)",
+            "Metre (m)",
+            "Santimetre (cm)",
+            "Milimetre(mm)  "});
             this.comboBox3.Location = new System.Drawing.Point(646, 60);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 24);
@@ -238,15 +240,6 @@
             this.UygulamaDiliLbl.Size = new System.Drawing.Size(126, 20);
             this.UygulamaDiliLbl.TabIndex = 2;
             this.UygulamaDiliLbl.Text = "Uygulama Dili";
-            // 
-            // Kaydet1Lbl
-            // 
-            this.Kaydet1Lbl.Location = new System.Drawing.Point(481, 356);
-            this.Kaydet1Lbl.Name = "Kaydet1Lbl";
-            this.Kaydet1Lbl.Size = new System.Drawing.Size(91, 28);
-            this.Kaydet1Lbl.TabIndex = 0;
-            this.Kaydet1Lbl.Text = "Kaydet";
-            this.Kaydet1Lbl.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -341,15 +334,6 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Minumum Hız Limitleri";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(330, 320);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 32);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Kaydet";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.LightCoral;
@@ -363,15 +347,6 @@
             this.tabPage3.Size = new System.Drawing.Size(792, 421);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Güvenlik Ayarları";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(561, 161);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(126, 43);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Kaydet";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // numericUpDown5
             // 
@@ -847,12 +822,40 @@
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
-            "Türkçe ",
-            "İngilizce"});
+            "dd.MM.yyyy",
+            "MM/dd/yyyy",
+            "yyyy-MM-dd"});
             this.comboBox2.Location = new System.Drawing.Point(261, 158);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 24);
             this.comboBox2.TabIndex = 13;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(561, 161);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(126, 43);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Kaydet";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(330, 320);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(103, 32);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "Kaydet";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // Kaydet1Lbl
+            // 
+            this.Kaydet1Lbl.Location = new System.Drawing.Point(481, 356);
+            this.Kaydet1Lbl.Name = "Kaydet1Lbl";
+            this.Kaydet1Lbl.Size = new System.Drawing.Size(91, 28);
+            this.Kaydet1Lbl.TabIndex = 0;
+            this.Kaydet1Lbl.Text = "Kaydet";
+            this.Kaydet1Lbl.UseVisualStyleBackColor = true;
             // 
             // Settings
             // 
@@ -894,7 +897,6 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.Button Kaydet1Lbl;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label UygulamaDiliLbl;
         private System.Windows.Forms.ComboBox comboBox5;
@@ -905,7 +907,6 @@
         private System.Windows.Forms.Label uzunlukBirimiLbl;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown numericUpDown3;
@@ -914,7 +915,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.NumericUpDown numericUpDown5;
         private System.Windows.Forms.NumericUpDown numericUpDown4;
         private System.Windows.Forms.Label label15;
@@ -958,5 +958,8 @@
         private System.Windows.Forms.CheckBox checkBox9;
         private System.Windows.Forms.Label TarihSaatLbl;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button Kaydet1Lbl;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

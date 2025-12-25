@@ -26,12 +26,7 @@ namespace DevicesControllerApp.Ayarlar
 
         private void Settings_Load(object sender, EventArgs e)
         {
-            // ComboBox içini dolduralım (Eğer Designer'da dolu değilse)
-            if (comboBox1.Items.Count == 0)
-            {
-                comboBox1.Items.Add("Türkçe");
-                comboBox1.Items.Add("English");
-            }
+       
 
             // Mevcut dile göre ComboBox'ı seçili hale getirelim
             if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "en")
@@ -61,10 +56,8 @@ namespace DevicesControllerApp.Ayarlar
                 mainFormIcinDilIsmi = "türkçe";
             }
 
-            // 1. Uygulamanın arka plan dilini (Culture) değiştir
-            CultureInfo culture = new CultureInfo(secilenDilKodu == "en" ? "en-US" : "tr-TR");
-            Thread.CurrentThread.CurrentCulture = culture;
-            Thread.CurrentThread.CurrentUICulture = culture;
+          
+         
 
             // 2. Ayarlar sayfasındaki yazıları hemen güncelle
             DiliGuncelle(secilenDilKodu);
