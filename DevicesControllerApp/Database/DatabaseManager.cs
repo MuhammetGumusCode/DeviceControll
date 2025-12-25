@@ -998,7 +998,43 @@ namespace DevicesControllerApp.Database
         }
 
 
+        // Mevcut DatabaseManager class'ının içine ekle veya güncelle:
+        public string GetCurrentDateFormat()
+        {
+            try
+            {
+                // Bağlantıyı aç (Senin OpenConnection metodunu kullanıyoruz)
+                if (OpenConnection())
+                {
+                    string query = "SELECT date_time_format FROM general_settings LIMIT 1";
 
+                    // GetData yerine senin kullandığın standart yöntemi (DataAdapter) kullanıyoruz
+                    using (NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        if (dt.Rows.Count > 0)
+                        {
+                            return dt.Rows[0]["date_time_format"].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Hata durumunda konsola yaz ama programı kırma
+                Console.WriteLine("Tarih formatı alınamadı: " + ex.Message);
+            }
+            finally
+            {
+                // İsteğe bağlı: Her sorgudan sonra kapatmak istersen:
+                // CloseConnection(); 
+            }
+
+            // Eğer bir hata olursa veya veri yoksa varsayılan olarak bunu döndür
+            return "dd.MM.yyyy";
+        }
 
 
 

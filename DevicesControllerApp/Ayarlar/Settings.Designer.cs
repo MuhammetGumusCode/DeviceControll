@@ -158,7 +158,7 @@
             "dd.MM.yyyy",
             "MM/dd/yyyy",
             "yyyy-MM-dd"});
-            this.comboBox2.Location = new System.Drawing.Point(261, 158);
+            this.comboBox2.Location = new System.Drawing.Point(261, 240);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 24);
             this.comboBox2.TabIndex = 13;
@@ -167,7 +167,7 @@
             // 
             this.TarihSaatLbl.AutoSize = true;
             this.TarihSaatLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.TarihSaatLbl.Location = new System.Drawing.Point(22, 162);
+            this.TarihSaatLbl.Location = new System.Drawing.Point(22, 244);
             this.TarihSaatLbl.Name = "TarihSaatLbl";
             this.TarihSaatLbl.Size = new System.Drawing.Size(96, 20);
             this.TarihSaatLbl.TabIndex = 12;
@@ -180,7 +180,7 @@
             this.comboBox5.Items.AddRange(new object[] {
             "Light",
             "Dark"});
-            this.comboBox5.Location = new System.Drawing.Point(261, 247);
+            this.comboBox5.Location = new System.Drawing.Point(261, 147);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(121, 24);
             this.comboBox5.TabIndex = 11;
@@ -189,7 +189,7 @@
             // 
             this.TemaLbl.AutoSize = true;
             this.TemaLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.TemaLbl.Location = new System.Drawing.Point(42, 251);
+            this.TemaLbl.Location = new System.Drawing.Point(42, 151);
             this.TemaLbl.Name = "TemaLbl";
             this.TemaLbl.Size = new System.Drawing.Size(55, 20);
             this.TemaLbl.TabIndex = 10;

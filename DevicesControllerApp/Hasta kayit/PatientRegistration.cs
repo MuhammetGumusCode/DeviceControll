@@ -593,6 +593,19 @@ namespace DevicesControllerApp.Hasta_kayit
 
         private void PatientRegistration_Load(object sender, EventArgs e)
         {
+
+
+            string format = DatabaseManager.Instance.GetCurrentDateFormat();
+
+            // 2. Doğum Tarihi Seçicisine Uygula
+            // (DateTimePicker nesnelerinin adlarını Designer'dan kontrol et)
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = format;
+
+            // Varsa Kayıt Tarihi vb. diğer tarih kutularına da aynısını yap
+             dateTimePicker_tedaviBas.Format = DateTimePickerFormat.Custom;
+            dateTimePicker_tedaviBas.CustomFormat = format;
+
             ListeyiYenile();
             SehirleriYukle();
         }

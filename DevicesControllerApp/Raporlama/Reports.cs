@@ -1,18 +1,19 @@
-﻿using System;
+﻿using DevicesControllerApp.Database;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using iTextSharp.text.pdf;
-using iTextSharp.text;
-using Npgsql;
-using System.Globalization;
-using System.Threading;
 
 namespace DevicesControllerApp.Raporlama
 {
@@ -27,6 +28,10 @@ namespace DevicesControllerApp.Raporlama
             InitializeComponent();
             FillLanguageCombo();
         }
+
+
+     
+
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -123,6 +128,14 @@ namespace DevicesControllerApp.Raporlama
 
         private void Reports_Load_1(object sender, EventArgs e)
         {
+
+            string format = DatabaseManager.Instance.GetCurrentDateFormat();
+            dtBaslangic.Format = DateTimePickerFormat.Custom;
+            dtBaslangic.CustomFormat = format;
+
+            dtBitis.Format = DateTimePickerFormat.Custom;
+            dtBitis.CustomFormat = format;
+
             if (System.ComponentModel.LicenseManager.UsageMode
        == System.ComponentModel.LicenseUsageMode.Designtime)
                 return;
@@ -219,6 +232,11 @@ namespace DevicesControllerApp.Raporlama
                 SetLanguage("en-US");
             else if (cmbLanguage.SelectedIndex == 2)
                 SetLanguage("ar-SA");
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
