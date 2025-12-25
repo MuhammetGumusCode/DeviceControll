@@ -3,7 +3,7 @@ using DevicesControllerApp.Ayarlar;
 using DevicesControllerApp.Hasta_kayit;
 using DevicesControllerApp.Kullanici;
 using DevicesControllerApp.Raporlama;
-
+using DevicesControllerApp.Database;
 //using DevicesControllerApp.Raporlama;
 using DevicesControllerApp.Servis;
 using DevicesControllerApp.Terapi;
@@ -78,6 +78,38 @@ namespace DevicesControllerApp
 
             // Metinleri seçilen dile göre güncelle
             MetinleriGuncelle(secilenDil);
+        }
+        //BU satırdan itibaren veritabanından dil ayarını çekip uygulama kısmı
+      
+        
+        public void MainFormDiliGuncelle(string dilKodu)
+        {
+            // Veritabanında "tr" veya "en" diye kayıtlı, ona göre işlem yapıyoruz.
+            // Ayrıca Settings'ten "english" veya "türkçe" kelimesi gelirse onu da kapsayalım.
+
+            if (dilKodu == "en" || dilKodu.ToLower() == "english")
+            {
+                // --- İNGİLİZCE ---
+                // Yan panellerdeki butonların isimlerini buraya yazmalısın.
+                // Örnek:
+                // btnAnaSayfa.Text = "Home";
+                // btnHastalar.Text = "Patients";
+                // btnAyarlar.Text = "Settings";
+                // btnCikis.Text = "Logout";
+
+                // Eğer buton isimlerini bilmiyorsam senin için genel bir örnek:
+                this.Text = "Device Controller"; // Form Başlığı
+            }
+            else
+            {
+                // --- TÜRKÇE ---
+                // btnAnaSayfa.Text = "Ana Sayfa";
+                // btnHastalar.Text = "Hastalar";
+                // btnAyarlar.Text = "Ayarlar";
+                // btnCikis.Text = "Çıkış";
+
+                this.Text = "Cihaz Kontrolü";
+            }
         }
 
         private void MetinleriGuncelle(string secilenDil)
@@ -239,6 +271,25 @@ namespace DevicesControllerApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+
+
+            System.Data.DataRow row = DatabaseManager.Instance.GetGeneralSettings();
+
+            if (row != null)
+            {
+                // 2. Dil ayarını al ("en" veya "tr" gelecektir)
+                string dbDil = row["application_language"].ToString();
+
+                // 3. Dili uygula
+                MainFormDiliGuncelle(dbDil);
+            }
+
+
+
+
+
+
+
             foreach (Control c in splitContainer1.Panel1.Controls)
             {
                 if (c is Button)

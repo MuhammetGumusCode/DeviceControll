@@ -24,6 +24,8 @@ namespace DevicesControllerApp.Ayarlar
             this.Kaydet1Lbl.Click += new System.EventHandler(this.Kaydet1Lbl_Click);
         }
 
+
+
         private void Settings_Load(object sender, EventArgs e)
         {
             // Veritabanından mevcut ayarları çekip kutuları dolduruyoruz
