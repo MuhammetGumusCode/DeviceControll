@@ -36,8 +36,6 @@
             this.AğrlıkBirimiLbl = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.uzunlukBirimiLbl = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.TarihSaatLbl = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.UygulamaDiliLbl = new System.Windows.Forms.Label();
             this.Kaydet1Lbl = new System.Windows.Forms.Button();
@@ -99,6 +97,8 @@
             this.label17 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.TarihSaatLbl = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -132,14 +132,14 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.LightGray;
+            this.tabPage1.Controls.Add(this.comboBox2);
+            this.tabPage1.Controls.Add(this.TarihSaatLbl);
             this.tabPage1.Controls.Add(this.comboBox5);
             this.tabPage1.Controls.Add(this.TemaLbl);
             this.tabPage1.Controls.Add(this.comboBox4);
             this.tabPage1.Controls.Add(this.AğrlıkBirimiLbl);
             this.tabPage1.Controls.Add(this.comboBox3);
             this.tabPage1.Controls.Add(this.uzunlukBirimiLbl);
-            this.tabPage1.Controls.Add(this.comboBox2);
-            this.tabPage1.Controls.Add(this.TarihSaatLbl);
             this.tabPage1.Controls.Add(this.comboBox1);
             this.tabPage1.Controls.Add(this.UygulamaDiliLbl);
             this.tabPage1.Controls.Add(this.Kaydet1Lbl);
@@ -157,7 +157,7 @@
             this.comboBox5.Items.AddRange(new object[] {
             "Light",
             "Dark"});
-            this.comboBox5.Location = new System.Drawing.Point(292, 264);
+            this.comboBox5.Location = new System.Drawing.Point(261, 247);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(121, 24);
             this.comboBox5.TabIndex = 11;
@@ -166,7 +166,7 @@
             // 
             this.TemaLbl.AutoSize = true;
             this.TemaLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.TemaLbl.Location = new System.Drawing.Point(8, 268);
+            this.TemaLbl.Location = new System.Drawing.Point(42, 251);
             this.TemaLbl.Name = "TemaLbl";
             this.TemaLbl.Size = new System.Drawing.Size(55, 20);
             this.TemaLbl.TabIndex = 10;
@@ -216,28 +216,6 @@
             this.uzunlukBirimiLbl.TabIndex = 6;
             this.uzunlukBirimiLbl.Text = "Uzunluk Birimi";
             // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Türkçe ",
-            "İngilizce"});
-            this.comboBox2.Location = new System.Drawing.Point(292, 166);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 24);
-            this.comboBox2.TabIndex = 5;
-            // 
-            // TarihSaatLbl
-            // 
-            this.TarihSaatLbl.AutoSize = true;
-            this.TarihSaatLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.TarihSaatLbl.Location = new System.Drawing.Point(8, 166);
-            this.TarihSaatLbl.Name = "TarihSaatLbl";
-            this.TarihSaatLbl.Size = new System.Drawing.Size(102, 20);
-            this.TarihSaatLbl.TabIndex = 4;
-            this.TarihSaatLbl.Text = "Tarih/Saat ";
-            // 
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -245,7 +223,7 @@
             this.comboBox1.Items.AddRange(new object[] {
             "Türkçe ",
             "İngilizce"});
-            this.comboBox1.Location = new System.Drawing.Point(292, 64);
+            this.comboBox1.Location = new System.Drawing.Point(261, 64);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 3;
@@ -854,6 +832,28 @@
             this.label16.TabIndex = 0;
             this.label16.Text = "SMTP Sunucusu";
             // 
+            // TarihSaatLbl
+            // 
+            this.TarihSaatLbl.AutoSize = true;
+            this.TarihSaatLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.TarihSaatLbl.Location = new System.Drawing.Point(22, 162);
+            this.TarihSaatLbl.Name = "TarihSaatLbl";
+            this.TarihSaatLbl.Size = new System.Drawing.Size(96, 20);
+            this.TarihSaatLbl.TabIndex = 12;
+            this.TarihSaatLbl.Text = "Tarih/Saat";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Türkçe ",
+            "İngilizce"});
+            this.comboBox2.Location = new System.Drawing.Point(261, 158);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 24);
+            this.comboBox2.TabIndex = 13;
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -903,8 +903,6 @@
         private System.Windows.Forms.Label AğrlıkBirimiLbl;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label uzunlukBirimiLbl;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label TarihSaatLbl;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button2;
@@ -958,5 +956,7 @@
         private System.Windows.Forms.CheckBox checkBox8;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.CheckBox checkBox9;
+        private System.Windows.Forms.Label TarihSaatLbl;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }
