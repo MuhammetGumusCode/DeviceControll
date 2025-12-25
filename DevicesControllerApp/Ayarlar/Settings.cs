@@ -14,6 +14,7 @@ namespace DevicesControllerApp.Ayarlar
     {
         // MainForm'a haber vermek için event
         public event EventHandler<string> DilDegisti;
+        public event EventHandler<string> TemaDegisti;
 
         public Settings()
         {
@@ -67,29 +68,33 @@ namespace DevicesControllerApp.Ayarlar
         {
             try
             {
-                // 1. Seçilen değerleri uygun formatta al
+                // Değerleri al
                 string dilKodu = (comboBox1.SelectedIndex == 1) ? "en" : "tr";
+
+                // Tema Kodu: "Dark" veya "Light"
                 string temaKodu = (comboBox5.SelectedIndex == 1) ? "Dark" : "Light";
 
                 string tarihFormat = comboBox2.Text;
                 string uzunlukBirim = comboBox3.Text;
                 string agirlikBirim = comboBox4.Text;
 
-                // 2. Veritabanı Yöneticisine gönder
+                // Veritabanını Güncelle
                 bool sonuc = DatabaseManager.Instance.UpdateGeneralSettings(dilKodu, tarihFormat, uzunlukBirim, agirlikBirim, temaKodu);
 
-                // 3. Kullanıcıya bilgi ver
                 if (sonuc)
                 {
-                    MessageBox.Show(
-                        (dilKodu == "tr") ? "Ayarlar başarıyla kaydedildi!" : "Settings saved successfully!",
-                        "Bilgi / Info",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                    MessageBox.Show((dilKodu == "tr") ? "Ayarlar kaydedildi!" : "Settings saved!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // --- KRİTİK NOKTA: MAIN FORM'A HABER VERİYORUZ ---
+                    TemaDegisti?.Invoke(this, temaKodu);
+
+                    // Eğer Ayarlar sayfasının rengini de anında değiştirmek istersen:
+                    this.BackColor = (temaKodu == "Dark") ? Color.FromArgb(30, 30, 30) : Color.White;
+                    this.ForeColor = (temaKodu == "Dark") ? Color.White : Color.Black;
                 }
                 else
                 {
-                    MessageBox.Show("Kayıt sırasında bir hata oluştu.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Hata oluştu / Error occurred.");
                 }
             }
             catch (Exception ex)

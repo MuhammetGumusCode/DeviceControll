@@ -257,32 +257,20 @@ namespace DevicesControllerApp
 
 
             System.Data.DataRow row = DatabaseManager.Instance.GetGeneralSettings();
-
-
             if (row != null)
             {
-                // 2. Veritabanındaki kısa kodu al ("en" veya "tr")
+                // 1. Dil Ayarları (Zaten yapmıştık)
                 string dbDilKodu = row["application_language"].ToString();
+                string jsonDilAnahtari = (dbDilKodu == "en" || dbDilKodu.ToLower() == "english") ? "english" : "türkçe";
 
-                // 3. Bu kısa kodu, JSON yapındaki uzun isme ("english", "türkçe") çevir
-                string jsonDilAnahtari = "türkçe"; // Varsayılan
-                if (dbDilKodu == "en" || dbDilKodu.ToLower() == "english")
-                {
-                    jsonDilAnahtari = "english";
-                }
-                else if (dbDilKodu == "ar" || dbDilKodu.ToLower() == "arabic")
-                {
-                    jsonDilAnahtari = "arapça";
-                }
-
-                // 4. BUTONLARI GÜNCELLE (Eksik olan kritik parça buydu)
                 MetinleriGuncelle(jsonDilAnahtari);
-
-                // 5. Formun kendi değişkenini de güncelle ki hafızada kalsın
                 this.secilenDil = jsonDilAnahtari;
-
-                // 6. Başlığı değiştiren fonksiyonu da çağır
                 MainFormDiliGuncelle(dbDilKodu);
+
+                // 2. TEMA AYARLARI (YENİ)
+                // Veritabanında "Dark" veya "Light" yazıyor olabilir.
+                string dbTema = row["theme"].ToString();
+                TemayiUygula(dbTema);
             }
 
 
@@ -601,6 +589,9 @@ namespace DevicesControllerApp
             Settings st = new Settings();
             st.Dock = DockStyle.Fill;
             st.DilDegisti += St_DilDegisti;
+            st.TemaDegisti += (s, yeniTema) => {
+                TemayiUygula(yeniTema);
+            };
             splitContainer2.Panel2.Controls.Clear();
             splitContainer2.Panel2.Controls.Add(st);
         }
@@ -615,7 +606,36 @@ namespace DevicesControllerApp
             MetinleriGuncelle(yeniDilIsmi);
         }
 
+        public void TemayiUygula(string tema)
+        {
+            if (tema == "Dark")
+            {
+                // --- KOYU MOD (DARK) RENKLERİ ---
+                this.BackColor = Color.FromArgb(30, 30, 30); // Koyu Gri Arkaplan
+                this.ForeColor = Color.White; // Beyaz Yazılar
 
+                // Sol Menü Paneli (Eğer splitContainer kullanıyorsan)
+                splitContainer1.Panel1.BackColor = Color.FromArgb(45, 45, 48);
+
+                // Üst veya İç Paneller
+                splitContainer2.Panel1.BackColor = Color.FromArgb(45, 45, 48);
+                splitContainer2.Panel2.BackColor = Color.FromArgb(30, 30, 30);
+            }
+            else
+            {
+                // --- AÇIK MOD (LIGHT) RENKLERİ ---
+                this.BackColor = Color.WhiteSmoke; // Açık Gri/Beyaz Arkaplan
+                this.ForeColor = Color.Black; // Siyah Yazılar
+
+                // Sol Menü Paneli (Orijinal Mavi rengin neyse onu yazabilirsin)
+                // Örnek: Color.FromArgb(41, 128, 185) gibi bir mavidir muhtemelen.
+                // Varsayılan gri bırakıyorum, sen eski rengini biliyorsan buraya yaz.
+                splitContainer1.Panel1.BackColor = SystemColors.Control;
+
+                splitContainer2.Panel1.BackColor = SystemColors.Control;
+                splitContainer2.Panel2.BackColor = Color.White;
+            }
+        }
 
     }
 }
