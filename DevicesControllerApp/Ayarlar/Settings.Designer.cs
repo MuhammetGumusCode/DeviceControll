@@ -430,9 +430,9 @@
             this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label10.Location = new System.Drawing.Point(8, 58);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(216, 20);
+            this.label10.Size = new System.Drawing.Size(188, 20);
             this.label10.TabIndex = 0;
-            this.label10.Text = "Oturum Timeout Süreleri";
+            this.label10.Text = "Login Timeout Süresi";
             // 
             // tabPage4
             // 

@@ -45,16 +45,36 @@ namespace DevicesControllerApp.Terapi
             InitializeComponent();   // Yeniden yüklenir
         }
 
-       
+
         private void Therapy_Load(object sender, EventArgs e)
         {
-            decimal carpan = DatabaseManager.Instance.GetLengthMultiplier(false);
-            string birim = DatabaseManager.Instance.GetLengthUnitLabel();
+            try
+            {
+                decimal carpan = DatabaseManager.Instance.GetLengthMultiplier(false);
+                double DestekBar = 0.0;
+                double gelenDestekVerisi = 0.5;
+                double gelenAyakVerisi = 0.2;
+                double Ayak = 0.0;
 
-            // 2. Başlığı Güncelle
-            lblAnlikDestekBar.Text = $"Mesafe ({birim})";
-            lblAnlikAyak.Text = $"Mesafe ({birim})";
+                // Çarpma işlemini yapıp ekrana yazdırıyoruz (CM ise 50 yazar, Metre ise 0.5 yazar)
+                DestekBar = (gelenDestekVerisi * (double)carpan);
+                Ayak = (gelenAyakVerisi * (double)carpan);
 
+                // 1. Çarpanı ve Birimi Al
+                // ('false' gönderiyoruz çünkü bu bir Mesafe verisi. Metre ise 1, CM ise 100 gelir)
+                
+                string birim = DatabaseManager.Instance.GetLengthUnitLabel();
+
+                // 2. Başlıkları Güncelle (cm) veya (m) yap
+                lblAnlikDestekBar.Text = $"({DestekBar}) ({birim})";
+                lblAnlikAyak.Text = $"({Ayak}) ({birim})";
+
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.Message);
+            }
         }
 
         private void txbArama_Enter(object sender, EventArgs e)

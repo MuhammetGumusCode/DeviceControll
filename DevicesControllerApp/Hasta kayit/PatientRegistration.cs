@@ -621,22 +621,28 @@ namespace DevicesControllerApp.Hasta_kayit
             label20.Text = $"Kalça-Diz ({birim})";
             label21.Text = $"Diz-Bilek ({birim})";
             label13.Text = $"Ayak ({birim})";
-
-            // --- BURASI KRİTİK: NUMERICUPDOWN AYARLARI ---
             if (birim == "m")
             {
-                // Metre ise: Virgülden sonra 2 hane olsun (1.80 gibi)
-                // Maksimum değeri küçült (3.00 metre yeterli)
+                // METRE: Virgül açık, Max 3.00 (Örn: 1.80)
                 AyarlaNumeric(numericUpDown_boy, 2, 3);
                 AyarlaNumeric(numericUpDownbacak, 2, 2);
                 AyarlaNumeric(numericUpDown_kalca, 2, 2);
                 AyarlaNumeric(numericUpDown_diz, 2, 2);
                 AyarlaNumeric(numericUpDown_ayak, 2, 1);
             }
+            else if (birim == "mm")
+            {
+                // MİLİMETRE: Virgül kapalı, Max 3000 (Örn: 1800)
+                // NOT: Maksimum değeri 3000 yaptık ki 180 cm (1800 mm) sığsın!
+                AyarlaNumeric(numericUpDown_boy, 0, 3000);
+                AyarlaNumeric(numericUpDownbacak, 0, 2000);
+                AyarlaNumeric(numericUpDown_kalca, 0, 2000);
+                AyarlaNumeric(numericUpDown_diz, 0, 2000);
+                AyarlaNumeric(numericUpDown_ayak, 0, 500);
+            }
             else
             {
-                // CM veya MM ise: Virgül olmasın (180 gibi)
-                // Maksimum değer yüksek olsun (300 cm gibi)
+                // SANTİMETRE: Virgül kapalı, Max 300 (Örn: 180)
                 AyarlaNumeric(numericUpDown_boy, 0, 300);
                 AyarlaNumeric(numericUpDownbacak, 0, 200);
                 AyarlaNumeric(numericUpDown_kalca, 0, 200);
@@ -647,14 +653,12 @@ namespace DevicesControllerApp.Hasta_kayit
         }
 
 
-        // Bu yardımcı metodu Class'ın içine bir yere ekle
         private void AyarlaNumeric(NumericUpDown nud, int decimalPlace, int maxVal)
         {
-            nud.DecimalPlaces = decimalPlace; // Virgülden sonra kaç basamak?
-            nud.Maximum = maxVal;             // En fazla kaç yazılabilsin?
-            nud.Increment = (decimalPlace == 0) ? 1 : 0.01m; // Ok tuşuna basınca kaçar kaçar artsın?
+            nud.DecimalPlaces = decimalPlace;
+            nud.Maximum = maxVal; // Limit burası
+            nud.Increment = (decimalPlace == 0) ? 1 : 0.01m;
         }
-
 
         // ===============================================
         //  BUTON İŞLEMLERİ (Sadece DatabaseManager'ı Çağırır)
