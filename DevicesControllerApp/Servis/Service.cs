@@ -319,17 +319,34 @@ namespace DevicesControllerApp.Servis
             decimal carpan = DatabaseManager.Instance.GetLengthMultiplier(false);
             string birim = DatabaseManager.Instance.GetLengthUnitLabel();
 
+            try
+            {
+                // ---------------------------------------------------------
+                // 1. UZUNLUK AYARLARI (Servo Mesafesi)
+                // ---------------------------------------------------------
+                decimal uzunlukCarpan = DatabaseManager.Instance.GetLengthMultiplier(false);
+                string uzunlukBirim = DatabaseManager.Instance.GetLengthUnitLabel();
+
+                // BAŞLIĞI GÜNCELLE
+                // (Label ismin: lblServoDistance veya labelMesafe)
+                lblServoDistance.Text = $"Mesafe ({uzunlukBirim})";
+
+                // DEĞERİ ÇEVİR
+                // (Buraya kutunun içinde yazmasını istediğin STANDART (Metre) değeri yaz)
+                double hamServoMesafe = 50.0; // Örnek: 10.5 Metre
+
+                // KUTUYA YAZDIR
+                // (Textbox ismin: txtServoDistance)
+                txtServoDistance.Text = (hamServoMesafe * (double)uzunlukCarpan).ToString("0.##");
 
 
-            // 2. Başlığı Güncelle
-            lblServoDistance.Text = $"Mesafe ({birim})";
+              
 
-            // 3. Değeri Çevir (ÇARPMA İŞLEMİ)
-            // Veritabanından veya Cihazdan gelen ham veri (Metre cinsinden)
-            double hamMesafe = 5.5; // Örnek: Cihazdan 5.5 metre geldi
-
-            // 5.5 * 100 = 550 (cm) olur.
-            txtServoDistance.Text = (hamMesafe * (double)carpan).ToString("0.##");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Servis ayarları yüklenirken hata: " + ex.Message);
+            }
         }
 
         private void diagnosticsTimer_Tick(object sender, EventArgs e)

@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Therapy));
-            this.btnAnlik = new System.Windows.Forms.Button();
             this.panelBaslik = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -94,11 +93,8 @@
             this.label20 = new System.Windows.Forms.Label();
             this.lblHastaID = new System.Windows.Forms.Label();
             this.btnKaydet = new System.Windows.Forms.Button();
-            this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
             this.panelBaslik.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -108,13 +104,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarHiz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarDestekBar)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnAnlik
-            // 
-            this.btnAnlik.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.btnAnlik, "btnAnlik");
-            this.btnAnlik.Name = "btnAnlik";
-            this.btnAnlik.UseVisualStyleBackColor = false;
             // 
             // panelBaslik
             // 
@@ -550,30 +539,15 @@
             this.btnKaydet.UseVisualStyleBackColor = false;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
-            // label23
-            // 
-            resources.ApplyResources(this.label23, "label23");
-            this.label23.Name = "label23";
-            // 
             // label24
             // 
             resources.ApplyResources(this.label24, "label24");
             this.label24.Name = "label24";
             // 
-            // label25
-            // 
-            resources.ApplyResources(this.label25, "label25");
-            this.label25.Name = "label25";
-            // 
             // label26
             // 
             resources.ApplyResources(this.label26, "label26");
             this.label26.Name = "label26";
-            // 
-            // label27
-            // 
-            resources.ApplyResources(this.label27, "label27");
-            this.label27.Name = "label27";
             // 
             // Therapy
             // 
@@ -581,11 +555,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Controls.Add(this.label27);
             this.Controls.Add(this.label26);
-            this.Controls.Add(this.label25);
             this.Controls.Add(this.label24);
-            this.Controls.Add(this.label23);
             this.Controls.Add(this.btnKaydet);
             this.Controls.Add(this.lblHastaID);
             this.Controls.Add(this.label20);
@@ -642,7 +613,6 @@
             this.Controls.Add(this.btnPanelterapikon);
             this.Controls.Add(this.btnPanelCihaz);
             this.Controls.Add(this.panelBaslik);
-            this.Controls.Add(this.btnAnlik);
             this.Controls.Add(this.btnPanelHasta);
             this.Controls.Add(this.button1);
             this.Name = "Therapy";
@@ -662,8 +632,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnAnlik;
         private System.Windows.Forms.Panel panelBaslik;
         private System.Windows.Forms.Button btnPanelHasta;
         private System.Windows.Forms.Button btnPanelCihaz;
@@ -727,10 +695,7 @@
         private System.Windows.Forms.Label lblHastaID;
         private System.Windows.Forms.Button btnKaydet;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label27;
     }
 }

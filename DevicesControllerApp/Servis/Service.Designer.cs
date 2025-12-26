@@ -185,9 +185,9 @@
             this.lblLoadCellValue.ForeColor = System.Drawing.Color.Blue;
             this.lblLoadCellValue.Location = new System.Drawing.Point(292, 47);
             this.lblLoadCellValue.Name = "lblLoadCellValue";
-            this.lblLoadCellValue.Size = new System.Drawing.Size(71, 24);
+            this.lblLoadCellValue.Size = new System.Drawing.Size(45, 24);
             this.lblLoadCellValue.TabIndex = 1;
-            this.lblLoadCellValue.Text = "0.00 kg";
+            this.lblLoadCellValue.Text = "0.00";
             // 
             // lblLoadCellTitle
             // 

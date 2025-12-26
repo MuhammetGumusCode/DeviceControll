@@ -51,12 +51,31 @@ namespace DevicesControllerApp.Terapi
         {
             try
             {
-               
+                // --- 1. UZUNLUKLARI AYARLA (Mesafe) ---
+                decimal uzunlukCarpan = DatabaseManager.Instance.GetLengthMultiplier(false);
+                string uzunlukBirim = DatabaseManager.Instance.GetLengthUnitLabel();
+
+                // ÖRNEK DEĞERLER (Cihazdan gelen verileri buraya bağlayacaksın)
+                double hamDestekMesafe = 0.8; // (Metre)
+                double hamAyakMesafe = 0.3;   // (Metre)
+
+                // HESAPLA VE BİRLEŞTİR (Örn: "50 cm")
+                // NOT: 'lblAnlikDestekBarDeger' senin sayıların yazdığı LABEL veya TEXTBOX'tır.
+                // Eğer sende adı farklıysa (örn: label5, textBox1) lütfen orayı düzelt.
+                label24.Text = $"{(hamDestekMesafe * (double)uzunlukCarpan):0.##} {uzunlukBirim}";
+                label26.Text = $"{(hamAyakMesafe * (double)uzunlukCarpan):0.##} {uzunlukBirim}";
 
 
-               
+                // --- 2. AĞIRLIK AYARLA (Yük) ---
+                decimal agirlikCarpan = DatabaseManager.Instance.GetWeightMultiplier();
+                string agirlikBirim = DatabaseManager.Instance.GetWeightUnitLabel();
 
-              
+                // ÖRNEK DEĞER (Cihazdan gelen)
+                double hamAgirlik = 50.0; // (Kg)
+
+                // HESAPLA VE BİRLEŞTİR (Örn: "15000 g")
+                // 'lblAzaltilanAgirlikDeger' senin sayıların yazdığı LABEL veya TEXTBOX'tır.
+                lblAnlikAgirlik.Text = $"{(hamAgirlik * (double)agirlikCarpan):0.##} {agirlikBirim}";
             }
             catch (Exception ex)
             {
