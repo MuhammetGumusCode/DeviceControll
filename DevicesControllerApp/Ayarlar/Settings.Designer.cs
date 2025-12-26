@@ -169,9 +169,9 @@
             this.TarihSaatLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.TarihSaatLbl.Location = new System.Drawing.Point(22, 244);
             this.TarihSaatLbl.Name = "TarihSaatLbl";
-            this.TarihSaatLbl.Size = new System.Drawing.Size(96, 20);
+            this.TarihSaatLbl.Size = new System.Drawing.Size(121, 20);
             this.TarihSaatLbl.TabIndex = 12;
-            this.TarihSaatLbl.Text = "Tarih/Saat";
+            this.TarihSaatLbl.Text = "Tarih Dizaynı";
             // 
             // comboBox5
             // 

@@ -659,6 +659,23 @@ namespace DevicesControllerApp.Hasta_kayit
                 AyarlaNumeric(numericUpDown_ayak, 0, 60);
             }
 
+
+            string agirlikBirim = DatabaseManager.Instance.GetWeightUnitLabel();
+
+            // Tasarımında "Kilo" yazan label'ın adı 'label5'. Bunu güncelliyoruz.
+            label12.Text = $"Kilo ({agirlikBirim})";
+
+            if (agirlikBirim == "kg")
+            {
+                // Kg: 1 virgül, Max 300
+                AyarlaNumeric(numericUpDown_kilo, 1, 300);
+            }
+            else
+            {
+                // Gram: Virgül yok, Max 300.000
+                AyarlaNumeric(numericUpDown_kilo, 0, 300000);
+            }
+
         }
 
         // YENİ YARDIMCI METOT (Mutlaka ekle)
@@ -924,8 +941,14 @@ namespace DevicesControllerApp.Hasta_kayit
                 textBox_surname.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
 
                 if (dataGridView1.Rows[e.RowIndex].Cells[3].Value != DBNull.Value)
+                {
                     dateTimePicker1.Value = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[3].Value);
 
+                    // --- EKLE: Formatı Hatırlat ---
+                    string format = DatabaseManager.Instance.GetCurrentDateFormat();
+                    dateTimePicker1.Format = DateTimePickerFormat.Custom;
+                    dateTimePicker1.CustomFormat = format;
+                }
                 string cinsiyetId = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
                 if (cinsiyetId == "1") radioButton_man.Checked = true;
                 else radioButton_woman.Checked = true;
@@ -983,9 +1006,15 @@ namespace DevicesControllerApp.Hasta_kayit
 
                 textBox_teshis.Text = dataGridView1.Rows[e.RowIndex].Cells[11].Value.ToString();
                 textBox_teshisacikalma.Text = dataGridView1.Rows[e.RowIndex].Cells[12].Value.ToString();
-
                 if (dataGridView1.Rows[e.RowIndex].Cells[13].Value != DBNull.Value)
+                {
                     dateTimePicker_tedaviBas.Value = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[13].Value);
+
+                    // --- EKLE: Formatı Hatırlat ---
+                    string format = DatabaseManager.Instance.GetCurrentDateFormat();
+                    dateTimePicker_tedaviBas.Format = DateTimePickerFormat.Custom;
+                    dateTimePicker_tedaviBas.CustomFormat = format;
+                }
 
                 maskedTextBox_phone.Text = dataGridView1.Rows[e.RowIndex].Cells[14].Value.ToString();
                 textBox_email.Text = dataGridView1.Rows[e.RowIndex].Cells[15].Value.ToString();
