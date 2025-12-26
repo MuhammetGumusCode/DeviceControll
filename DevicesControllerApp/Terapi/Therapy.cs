@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -50,26 +51,12 @@ namespace DevicesControllerApp.Terapi
         {
             try
             {
-                decimal carpan = DatabaseManager.Instance.GetLengthMultiplier(false);
-                double DestekBar = 0.0;
-                double gelenDestekVerisi = 0.5;
-                double gelenAyakVerisi = 0.2;
-                double Ayak = 0.0;
+               
 
-                // Çarpma işlemini yapıp ekrana yazdırıyoruz (CM ise 50 yazar, Metre ise 0.5 yazar)
-                DestekBar = (gelenDestekVerisi * (double)carpan);
-                Ayak = (gelenAyakVerisi * (double)carpan);
 
-                // 1. Çarpanı ve Birimi Al
-                // ('false' gönderiyoruz çünkü bu bir Mesafe verisi. Metre ise 1, CM ise 100 gelir)
-                
-                string birim = DatabaseManager.Instance.GetLengthUnitLabel();
+               
 
-                // 2. Başlıkları Güncelle (cm) veya (m) yap
-                lblAnlikDestekBar.Text = $"({DestekBar}) ({birim})";
-                lblAnlikAyak.Text = $"({Ayak}) ({birim})";
-
-                
+              
             }
             catch (Exception ex)
             {
@@ -103,13 +90,13 @@ namespace DevicesControllerApp.Terapi
         private void trackBarDestekBar_Scroll(object sender, EventArgs e)
         {
             // Destek barı yüksekliği değişimi
-            lblAnlikDestekBar.Text = trackBarDestekBar.Value + " cm";
+            label24.Text = trackBarDestekBar.Value + " cm";
         }
 
         private void trackBarAyakNumarasi_Scroll(object sender, EventArgs e)
         {
             // Ayak numarası değişimi
-            lblAnlikAyak.Text = trackBarAyakNumarasi.Value.ToString();
+            label26.Text = trackBarAyakNumarasi.Value.ToString();
         }
 
         private void trackBarHiz_Scroll(object sender, EventArgs e)

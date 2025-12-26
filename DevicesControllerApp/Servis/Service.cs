@@ -319,6 +319,8 @@ namespace DevicesControllerApp.Servis
             decimal carpan = DatabaseManager.Instance.GetLengthMultiplier(false);
             string birim = DatabaseManager.Instance.GetLengthUnitLabel();
 
+
+
             // 2. Başlığı Güncelle
             lblServoDistance.Text = $"Mesafe ({birim})";
 

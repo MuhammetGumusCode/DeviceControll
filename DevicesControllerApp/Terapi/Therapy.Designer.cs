@@ -67,8 +67,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.lblTerapiSuresi = new System.Windows.Forms.Label();
             this.lblAnlikBilgiHiz = new System.Windows.Forms.Label();
-            this.lblAnlikAyak = new System.Windows.Forms.Label();
-            this.lblAnlikDestekBar = new System.Windows.Forms.Label();
             this.lblAnlikAgirlik = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.lblCihazDurumu = new System.Windows.Forms.Label();
@@ -96,6 +94,11 @@
             this.label20 = new System.Windows.Forms.Label();
             this.lblHastaID = new System.Windows.Forms.Label();
             this.btnKaydet = new System.Windows.Forms.Button();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
             this.panelBaslik.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -370,18 +373,6 @@
             this.lblAnlikBilgiHiz.BackColor = System.Drawing.Color.Transparent;
             this.lblAnlikBilgiHiz.Name = "lblAnlikBilgiHiz";
             // 
-            // lblAnlikAyak
-            // 
-            resources.ApplyResources(this.lblAnlikAyak, "lblAnlikAyak");
-            this.lblAnlikAyak.BackColor = System.Drawing.Color.Transparent;
-            this.lblAnlikAyak.Name = "lblAnlikAyak";
-            // 
-            // lblAnlikDestekBar
-            // 
-            resources.ApplyResources(this.lblAnlikDestekBar, "lblAnlikDestekBar");
-            this.lblAnlikDestekBar.BackColor = System.Drawing.Color.Transparent;
-            this.lblAnlikDestekBar.Name = "lblAnlikDestekBar";
-            // 
             // lblAnlikAgirlik
             // 
             resources.ApplyResources(this.lblAnlikAgirlik, "lblAnlikAgirlik");
@@ -559,12 +550,42 @@
             this.btnKaydet.UseVisualStyleBackColor = false;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
+            // label23
+            // 
+            resources.ApplyResources(this.label23, "label23");
+            this.label23.Name = "label23";
+            // 
+            // label24
+            // 
+            resources.ApplyResources(this.label24, "label24");
+            this.label24.Name = "label24";
+            // 
+            // label25
+            // 
+            resources.ApplyResources(this.label25, "label25");
+            this.label25.Name = "label25";
+            // 
+            // label26
+            // 
+            resources.ApplyResources(this.label26, "label26");
+            this.label26.Name = "label26";
+            // 
+            // label27
+            // 
+            resources.ApplyResources(this.label27, "label27");
+            this.label27.Name = "label27";
+            // 
             // Therapy
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Controls.Add(this.label27);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.label23);
             this.Controls.Add(this.btnKaydet);
             this.Controls.Add(this.lblHastaID);
             this.Controls.Add(this.label20);
@@ -590,8 +611,6 @@
             this.Controls.Add(this.lblAnlikCihazDurumu);
             this.Controls.Add(this.lblCihazDurumu);
             this.Controls.Add(this.lblAnlikAgirlik);
-            this.Controls.Add(this.lblAnlikDestekBar);
-            this.Controls.Add(this.lblAnlikAyak);
             this.Controls.Add(this.lblAnlikBilgiHiz);
             this.Controls.Add(this.lblTerapiSuresi);
             this.Controls.Add(this.button2);
@@ -678,8 +697,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lblTerapiSuresi;
         private System.Windows.Forms.Label lblAnlikBilgiHiz;
-        private System.Windows.Forms.Label lblAnlikAyak;
-        private System.Windows.Forms.Label lblAnlikDestekBar;
         private System.Windows.Forms.Label lblAnlikAgirlik;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Label lblCihazDurumu;
@@ -710,5 +727,10 @@
         private System.Windows.Forms.Label lblHastaID;
         private System.Windows.Forms.Button btnKaydet;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
     }
 }

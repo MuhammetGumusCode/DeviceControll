@@ -1100,7 +1100,43 @@ namespace DevicesControllerApp.Database
         }
 
 
+        // --- AĞIRLIK BİRİMİ YÖNETİCİSİ ---
+        public decimal GetWeightMultiplier()
+        {
+            try
+            {
+                DataRow row = GetGeneralSettings();
+                if (row == null) return 1.0m;
 
+                string unit = row["weight_unit"].ToString().ToLower();
+
+                // Eğer veritabanında "gram" yazıyorsa 1000 katı
+                if (unit.Contains("gram") && !unit.Contains("kilogram"))
+                {
+                    return 1000.0m; // 1 kg = 1000 g
+                }
+
+                // Varsayılan: KILOGRAM (Çarpan 1)
+                return 1.0m;
+            }
+            catch { return 1.0m; }
+        }
+
+        public string GetWeightUnitLabel()
+        {
+            try
+            {
+                DataRow row = GetGeneralSettings();
+                if (row == null) return "kg";
+
+                string unit = row["weight_unit"].ToString().ToLower();
+
+                if (unit.Contains("gram") && !unit.Contains("kilogram")) return "g";
+
+                return "kg";
+            }
+            catch { return "kg"; }
+        }
 
 
 

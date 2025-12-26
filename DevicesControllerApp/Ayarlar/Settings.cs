@@ -68,9 +68,22 @@ namespace DevicesControllerApp.Ayarlar
                     comboBox3.SelectedIndex = 0; // Santimetre (cm)
                 }
 
-                // 4. Ağırlık Birimi
-                string dbAgirlik = row["weight_unit"].ToString();
-                AkilliSecimYap(comboBox4, dbAgirlik);
+                // --- Settings_Load İçine Ekle ---
+
+                // Ağırlık Birimi Ayarı
+                string dbAgirlik = row["weight_unit"].ToString().ToLower();
+
+                // Varsayılan: Kilogram (Index 0)
+                comboBox4.SelectedIndex = 0;
+
+                if (dbAgirlik.Contains("gram") && !dbAgirlik.Contains("kilogram"))
+                {
+                    comboBox4.SelectedIndex = 1; // Gram (g)
+                }
+                else
+                {
+                    comboBox4.SelectedIndex = 0; // Kilogram (kg)
+                }
 
                 // 5. Tema
                 string dbTema = row["theme"].ToString();

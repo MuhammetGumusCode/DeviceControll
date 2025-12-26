@@ -649,6 +649,26 @@ namespace DevicesControllerApp.Hasta_kayit
                 AyarlaNumeric(numericUpDown_diz, 0, 200);
                 AyarlaNumeric(numericUpDown_ayak, 0, 100);
             }
+            string agirlikBirim = DatabaseManager.Instance.GetWeightUnitLabel();
+
+            // Label'ı güncelle (Label ismini kontrol et: label5, labelKilo vb.)
+            label5.Text = $"Kilo ({agirlikBirim})";
+
+            // Kutu Ayarları
+            if (agirlikBirim == "kg")
+            {
+                // Kilo: 1 virgül (70.5 kg), Max 300 kg
+                numericUpDown_kilo.DecimalPlaces = 1;
+                numericUpDown_kilo.Maximum = 300;
+                numericUpDown_kilo.Increment = 0.5m;
+            }
+            else
+            {
+                // Gram: Virgül yok (70500 g), Max 300.000 g
+                numericUpDown_kilo.DecimalPlaces = 0;
+                numericUpDown_kilo.Maximum = 300000;
+                numericUpDown_kilo.Increment = 100;
+            }
 
         }
 
@@ -690,6 +710,14 @@ namespace DevicesControllerApp.Hasta_kayit
             decimal dbDiz = numericUpDown_diz.Value / carpan;
             decimal dbAyak = numericUpDown_ayak.Value / carpan;
 
+
+            decimal agirlikCarpan = DatabaseManager.Instance.GetWeightMultiplier();
+
+            // 2. Değeri Çevir (Veritabanına her zaman KG gidecek)
+            // Gram seçiliyse (örn: 70000), 1000'e böler -> 70 kaydeder.
+            // Kg seçiliyse (örn: 70), 1'e böler -> 70 kaydeder.
+            decimal dbKilo = numericUpDown_kilo.Value / agirlikCarpan;
+
             // SQL YOK! Sadece parametreleri gönderiyoruz.
             // Artık sehirKodu değişkeni ComboBox'tan gelen güncel değeri taşıyor.
             bool sonuc = DatabaseManager.Instance.AddPatient(
@@ -698,8 +726,8 @@ namespace DevicesControllerApp.Hasta_kayit
                 textBox_surname.Text,
                 dateTimePicker1.Value.Date,
                 radioButton_man.Checked ? 1 : 2,
-               dbBoy,
-                numericUpDown_kilo.Value,
+                  dbBoy,
+                 dbKilo,
                  dbBacak,
                 dbKalca,
                 dbDiz,
