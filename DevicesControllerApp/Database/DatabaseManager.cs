@@ -1143,7 +1143,66 @@ namespace DevicesControllerApp.Database
 
 
 
+        // --- GÜVENLİK AYARLARI (security_settings) ---
 
+        public DataRow GetSecuritySettings()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                if (OpenConnection())
+                {
+                    // Tablo boşsa varsayılan değerleri (3 Hak, 10 Saniye) oluştur
+                    using (var checkCmd = new NpgsqlCommand("SELECT COUNT(*) FROM security_settings", conn))
+                    {
+                        long count = (long)checkCmd.ExecuteScalar();
+                        if (count == 0)
+                        {
+                            // Varsayılan: 10 sn bekleme, 3 hak
+                            string sql = "INSERT INTO security_settings (session_timeout_minutes, max_login_attempts) VALUES (10, 3)";
+                            using (var insertCmd = new NpgsqlCommand(sql, conn))
+                                insertCmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    using (NpgsqlDataAdapter da = new NpgsqlDataAdapter("SELECT * FROM security_settings ORDER BY id ASC LIMIT 1", conn))
+                    {
+                        da.Fill(dt);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Güvenlik ayarları çekilemedi: " + ex.Message);
+            }
+            return dt.Rows.Count > 0 ? dt.Rows[0] : null;
+        }
+
+        public bool UpdateSecuritySettings(int timeout, int maxAttempts)
+        {
+            try
+            {
+                if (OpenConnection())
+                {
+                    string sql = @"UPDATE security_settings SET 
+                           session_timeout_minutes=@p1, max_login_attempts=@p2 
+                           WHERE id = (SELECT id FROM security_settings LIMIT 1)";
+
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@p1", timeout);      // Bekleme Süresi
+                        cmd.Parameters.AddWithValue("@p2", maxAttempts);  // Giriş Hakkı
+                        return cmd.ExecuteNonQuery() > 0;
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Güvenlik ayarı güncelleme hatası: " + ex.Message);
+                return false;
+            }
+        }
 
 
 

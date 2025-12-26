@@ -89,6 +89,22 @@ namespace DevicesControllerApp.Ayarlar
                 else
                     comboBox5.SelectedIndex = 1; // Dark
             }
+
+
+
+            // --- GÜVENLİK AYARLARINI YÜKLE ---
+            DataRow secRow = DatabaseManager.Instance.GetSecuritySettings();
+            if (secRow != null)
+            {
+                // Veritabanındaki sütun isimlerinle eşleşiyor
+                // 'session_timeout_minutes' sütununu biz 'Bekleme Süresi (sn)' olarak kullanıyoruz.
+                numericUpDown_HataSuresi.Value = Convert.ToDecimal(secRow["session_timeout_minutes"]);
+                numericUpDown_GirisHakki.Value = Convert.ToDecimal(secRow["max_login_attempts"]);
+            }
+
+
+
+
         }
 
         // --- KAYDET BUTONU TIKLANDIĞINDA ÇALIŞACAK KOD ---
@@ -229,6 +245,30 @@ namespace DevicesControllerApp.Ayarlar
 
         private void Kaydet1Lbl_Click_1(object sender, EventArgs e)
         {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // ... (Genel ayarlar kayıt kodların - Dil, Tema vs.) ...
+
+                // --- GÜVENLİK AYARLARINI KAYDET ---
+                int yeniSure = (int)numericUpDown_HataSuresi.Value;
+                int yeniHak = (int)numericUpDown_GirisHakki.Value;
+
+                bool secSonuc = DatabaseManager.Instance.UpdateSecuritySettings(yeniSure, yeniHak);
+
+                if (secSonuc)
+                {
+                    MessageBox.Show(" Kaydedildi") ;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.Message);
+            }
 
         }
     }

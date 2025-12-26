@@ -53,8 +53,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_HataSuresi = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_GirisHakki = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -106,8 +106,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_HataSuresi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_GirisHakki)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
@@ -379,8 +379,8 @@
             // 
             this.tabPage3.BackColor = System.Drawing.Color.LightCoral;
             this.tabPage3.Controls.Add(this.button3);
-            this.tabPage3.Controls.Add(this.numericUpDown5);
-            this.tabPage3.Controls.Add(this.numericUpDown4);
+            this.tabPage3.Controls.Add(this.numericUpDown_HataSuresi);
+            this.tabPage3.Controls.Add(this.numericUpDown_GirisHakki);
             this.tabPage3.Controls.Add(this.label11);
             this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
@@ -397,20 +397,21 @@
             this.button3.TabIndex = 8;
             this.button3.Text = "Kaydet";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // numericUpDown5
+            // numericUpDown_HataSuresi
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(265, 58);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown5.TabIndex = 7;
+            this.numericUpDown_HataSuresi.Location = new System.Drawing.Point(265, 58);
+            this.numericUpDown_HataSuresi.Name = "numericUpDown_HataSuresi";
+            this.numericUpDown_HataSuresi.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown_HataSuresi.TabIndex = 7;
             // 
-            // numericUpDown4
+            // numericUpDown_GirisHakki
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(265, 205);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown4.TabIndex = 6;
+            this.numericUpDown_GirisHakki.Location = new System.Drawing.Point(265, 205);
+            this.numericUpDown_GirisHakki.Name = "numericUpDown_GirisHakki";
+            this.numericUpDown_GirisHakki.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown_GirisHakki.TabIndex = 6;
             // 
             // label11
             // 
@@ -875,8 +876,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_HataSuresi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_GirisHakki)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.tabPage5.ResumeLayout(false);
@@ -915,8 +916,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown numericUpDown_HataSuresi;
+        private System.Windows.Forms.NumericUpDown numericUpDown_GirisHakki;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox comboBox7;
         private System.Windows.Forms.Label label14;

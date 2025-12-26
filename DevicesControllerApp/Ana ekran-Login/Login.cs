@@ -18,6 +18,9 @@ namespace DevicesControllerApp.Ana_ekran_Login
 {
     public partial class form1 : Form
     {
+        // Varsayılan değerler (Veritabanı okunamazsa bunlar geçerli olur)
+        int dbMaxHak = 3;
+        int dbBeklemeSuresi = 10;
         public string GeciciKullaniciAdi { get; private set; }
 
         private Size originalFormSize;
@@ -146,6 +149,20 @@ namespace DevicesControllerApp.Ana_ekran_Login
 
         private void Login_Load(object sender, EventArgs e)
         {
+            // --- GÜVENLİK AYARLARINI ÇEK ---
+            try
+            {
+                DataRow row = DatabaseManager.Instance.GetSecuritySettings();
+                if (row != null)
+                {
+                    dbMaxHak = Convert.ToInt32(row["max_login_attempts"]);
+                    dbBeklemeSuresi = Convert.ToInt32(row["session_timeout_minutes"]);
+                }
+            }
+            catch
+            {
+                // Hata olursa varsayılanlar (3 ve 10) kalır.
+            }
 
             checkBox2.Checked = Properties.Settings.Default.beni_hatirla;
 
@@ -354,10 +371,10 @@ namespace DevicesControllerApp.Ana_ekran_Login
                     hatali_giris_sayisi++;
                     MessageBox.Show(diller[secilenDil]["yanlis_kullanici_adi_ve_sifre"], diller[secilenDil]["bilgi"], MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                    if (hatali_giris_sayisi >= 3)
+                    if (hatali_giris_sayisi >= dbMaxHak)
                     {
                         button1.Enabled = false;
-                        int kalan_sure = 10;
+                        int kalan_sure = dbBeklemeSuresi;
                         label3.Visible = true;
 
                         Timer timer = new Timer();
