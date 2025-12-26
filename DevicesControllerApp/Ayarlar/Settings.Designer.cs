@@ -222,8 +222,8 @@
             this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
-            "Metre (m)",
             "Santimetre (cm)",
+            "Metre (m)",
             "Milimetre(mm)  "});
             this.comboBox3.Location = new System.Drawing.Point(646, 60);
             this.comboBox3.Name = "comboBox3";
@@ -271,6 +271,7 @@
             this.Kaydet1Lbl.TabIndex = 0;
             this.Kaydet1Lbl.Text = "Kaydet";
             this.Kaydet1Lbl.UseVisualStyleBackColor = true;
+            this.Kaydet1Lbl.Click += new System.EventHandler(this.Kaydet1Lbl_Click_1);
             // 
             // tabPage2
             // 

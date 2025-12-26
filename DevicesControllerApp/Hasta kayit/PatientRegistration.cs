@@ -594,8 +594,8 @@ namespace DevicesControllerApp.Hasta_kayit
 
         private void PatientRegistration_Load(object sender, EventArgs e)
         {
-
-
+            ListeyiYenile();
+            SehirleriYukle();
             string format = DatabaseManager.Instance.GetCurrentDateFormat();
 
             // 2. Doğum Tarihi Seçicisine Uygula
@@ -607,8 +607,6 @@ namespace DevicesControllerApp.Hasta_kayit
              dateTimePicker_tedaviBas.Format = DateTimePickerFormat.Custom;
             dateTimePicker_tedaviBas.CustomFormat = format;
 
-            ListeyiYenile();
-            SehirleriYukle();
 
 
           
@@ -624,8 +622,39 @@ namespace DevicesControllerApp.Hasta_kayit
             label21.Text = $"Diz-Bilek ({birim})";
             label13.Text = $"Ayak ({birim})";
 
+            // --- BURASI KRİTİK: NUMERICUPDOWN AYARLARI ---
+            if (birim == "m")
+            {
+                // Metre ise: Virgülden sonra 2 hane olsun (1.80 gibi)
+                // Maksimum değeri küçült (3.00 metre yeterli)
+                AyarlaNumeric(numericUpDown_boy, 2, 3);
+                AyarlaNumeric(numericUpDownbacak, 2, 2);
+                AyarlaNumeric(numericUpDown_kalca, 2, 2);
+                AyarlaNumeric(numericUpDown_diz, 2, 2);
+                AyarlaNumeric(numericUpDown_ayak, 2, 1);
+            }
+            else
+            {
+                // CM veya MM ise: Virgül olmasın (180 gibi)
+                // Maksimum değer yüksek olsun (300 cm gibi)
+                AyarlaNumeric(numericUpDown_boy, 0, 300);
+                AyarlaNumeric(numericUpDownbacak, 0, 200);
+                AyarlaNumeric(numericUpDown_kalca, 0, 200);
+                AyarlaNumeric(numericUpDown_diz, 0, 200);
+                AyarlaNumeric(numericUpDown_ayak, 0, 100);
+            }
 
         }
+
+
+        // Bu yardımcı metodu Class'ın içine bir yere ekle
+        private void AyarlaNumeric(NumericUpDown nud, int decimalPlace, int maxVal)
+        {
+            nud.DecimalPlaces = decimalPlace; // Virgülden sonra kaç basamak?
+            nud.Maximum = maxVal;             // En fazla kaç yazılabilsin?
+            nud.Increment = (decimalPlace == 0) ? 1 : 0.01m; // Ok tuşuna basınca kaçar kaçar artsın?
+        }
+
 
         // ===============================================
         //  BUTON İŞLEMLERİ (Sadece DatabaseManager'ı Çağırır)
@@ -651,11 +680,11 @@ namespace DevicesControllerApp.Hasta_kayit
 
             // 2. Kullanıcının kutucuklara girdiği değerleri al ve veritabanı formatına (CM) çevir
             // (Değeri çarpana BÖLÜYORUZ. Örn: 1.80 / 0.01 = 180)
-            decimal dbBoy = decimal.Parse(numericUpDown_boy.Text) / carpan;
-            decimal dbBacak = decimal.Parse(numericUpDownbacak.Text) / carpan;
-            decimal dbKalca = decimal.Parse(numericUpDown_kalca.Text) / carpan;
-            decimal dbDiz = decimal.Parse(numericUpDown_diz.Text) / carpan;
-            decimal dbAyak = decimal.Parse(numericUpDown_ayak.Text) / carpan;
+            decimal dbBoy = numericUpDown_boy.Value / carpan;
+            decimal dbBacak = numericUpDownbacak.Value / carpan;
+            decimal dbKalca = numericUpDown_kalca.Value / carpan;
+            decimal dbDiz = numericUpDown_diz.Value / carpan;
+            decimal dbAyak = numericUpDown_ayak.Value / carpan;
 
             // SQL YOK! Sadece parametreleri gönderiyoruz.
             // Artık sehirKodu değişkeni ComboBox'tan gelen güncel değeri taşıyor.

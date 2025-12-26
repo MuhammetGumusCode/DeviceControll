@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DevicesControllerApp.Database;
+using Npgsql;
+using RehabilitationSystem.Communication;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,8 +12,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Npgsql;
-using RehabilitationSystem.Communication;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DevicesControllerApp.Terapi
@@ -47,7 +48,13 @@ namespace DevicesControllerApp.Terapi
        
         private void Therapy_Load(object sender, EventArgs e)
         {
-            // UserControl yüklendiğinde
+            decimal carpan = DatabaseManager.Instance.GetLengthMultiplier(false);
+            string birim = DatabaseManager.Instance.GetLengthUnitLabel();
+
+            // 2. Başlığı Güncelle
+            lblAnlikDestekBar.Text = $"Mesafe ({birim})";
+            lblAnlikAyak.Text = $"Mesafe ({birim})";
+
         }
 
         private void txbArama_Enter(object sender, EventArgs e)

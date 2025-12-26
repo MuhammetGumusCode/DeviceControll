@@ -942,35 +942,6 @@ namespace DevicesControllerApp.Database
 
 
 
-        // 1. GENEL AYARLAR (general_settings tablosu)
-        public DataRow GetGeneralSettings()
-        {
-            DataTable dt = new DataTable();
-            try
-            {
-                if (OpenConnection())
-                {
-                    // Tablo boşsa varsayılan kayıt oluştur (Patlamaması için önlem)
-                    using (var checkCmd = new NpgsqlCommand("SELECT COUNT(*) FROM general_settings", _connection))
-                    {
-                        long count = (long)checkCmd.ExecuteScalar();
-                        if (count == 0)
-                        {
-                            using (var insertCmd = new NpgsqlCommand("INSERT INTO general_settings (application_language, theme) VALUES ('tr', 'Light')", _connection))
-                                insertCmd.ExecuteNonQuery();
-                        }
-                    }
-
-                    using (NpgsqlDataAdapter da = new NpgsqlDataAdapter("SELECT * FROM general_settings ORDER BY id ASC LIMIT 1", _connection))
-                    {
-                        da.Fill(dt);
-                    }
-                }
-            }
-            catch { /* Hata yönetimi */ }
-            // finally { CloseConnection(); } // Bağlantıyı açık tutmak istiyorsan burayı kapat
-            return dt.Rows.Count > 0 ? dt.Rows[0] : null;
-        }
 
 
         public bool UpdateGeneralSettings(string lang, string dateFmt, string lenUnit, string weightUnit, string theme)
@@ -1040,54 +1011,93 @@ namespace DevicesControllerApp.Database
 
 
 
+        // --- MEVCUT GetGeneralSettings METODUNU BUL VE BUNUNLA DEĞİŞTİR ---
+        public DataRow GetGeneralSettings()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                if (OpenConnection())
+                {
+                    // Tablo boşsa varsayılan kayıt oluştur (SANTİMETRE DEFAULT)
+                    using (var checkCmd = new NpgsqlCommand("SELECT COUNT(*) FROM general_settings", conn))
+                    {
+                        long count = (long)checkCmd.ExecuteScalar();
+                        if (count == 0)
+                        {
+                            // İLK AÇILIŞTA VARSAYILAN DEĞERLER
+                            string sql = "INSERT INTO general_settings (application_language, date_time_format, length_unit, weight_unit, theme) VALUES ('tr', 'dd.MM.yyyy', 'Santimetre (cm)', 'Kilogram (kg)', 'Light')";
+                            using (var insertCmd = new NpgsqlCommand(sql, conn))
+                                insertCmd.ExecuteNonQuery();
+                        }
+                    }
 
-        // --- UZUNLUK BİRİMİ YÖNETİCİSİ ---
+                    using (NpgsqlDataAdapter da = new NpgsqlDataAdapter("SELECT * FROM general_settings ORDER BY id ASC LIMIT 1", conn))
+                    {
+                        da.Fill(dt);
+                    }
+                }
+            }
+            catch { }
+            return dt.Rows.Count > 0 ? dt.Rows[0] : null;
+        }
 
-        // isBodyMeasurement: TRUE ise (Boy, Bacak vb. - Veritabanı CM)
-        // isBodyMeasurement: FALSE ise (Yürünen Yol - Veritabanı Metre)
+        // --- UZUNLUK HESAPLAMA METODUNU BUL VE BUNUNLA DEĞİŞTİR ---
+        // isBodyMeasurement: TRUE ise Vücut (DB'de CM), FALSE ise Yol (DB'de Metre)
         public decimal GetLengthMultiplier(bool isBodyMeasurement)
         {
             try
             {
                 DataRow row = GetGeneralSettings();
+                // Eğer ayar yoksa varsayılan 1 dönsün
                 if (row == null) return 1.0m;
 
-                string unit = row["length_unit"].ToString().ToLower(); // "metre", "cm" vb.
+                string unit = row["length_unit"].ToString().ToLower();
 
+                // --- 1. SEÇENEK: METRE (m) ---
                 if (unit.Contains("metre") && !unit.Contains("santi") && !unit.Contains("mili"))
                 {
-                    // --- KULLANICI "METRE" SEÇTİ ---
-                    if (isBodyMeasurement) return 0.01m; // DB(cm) -> Ekran(m) (Örn: 180 -> 1.80)
-                    else return 1.0m;                    // DB(m) -> Ekran(m) (Değişmez)
+                    // Kullanıcı METRE istiyor
+                    if (isBodyMeasurement) return 0.01m; // 180 cm -> 1.80 m
+                    else return 1.0m;                    // 100 m -> 100 m
                 }
+                // --- 2. SEÇENEK: SANTİMETRE (cm) [VARSAYILAN] ---
                 else if (unit.Contains("santi") || unit.Contains("cm"))
                 {
-                    // --- KULLANICI "SANTİMETRE" SEÇTİ ---
-                    if (isBodyMeasurement) return 1.0m;  // DB(cm) -> Ekran(cm) (Değişmez)
-                    else return 100.0m;                  // DB(m) -> Ekran(cm) (Örn: 5m -> 500cm)
+                    // Kullanıcı CM istiyor
+                    if (isBodyMeasurement) return 1.0m;  // 180 cm -> 180 cm
+                    else return 100.0m;                  // 1 m -> 100 cm
+                }
+                // --- 3. SEÇENEK: MİLİMETRE (mm) ---
+                else if (unit.Contains("mili") || unit.Contains("mm"))
+                {
+                    // Kullanıcı MM istiyor
+                    if (isBodyMeasurement) return 10.0m; // 180 cm -> 1800 mm
+                    else return 1000.0m;                 // 1 m -> 1000 mm
                 }
 
-                return 1.0m; // Varsayılan
+                return 1.0m; // Bulamazsa CM kabul et
             }
             catch { return 1.0m; }
         }
 
-        // Birim etiketini döndürür (Örn: "m", "cm")
+        // Birim Etiketi (m, cm, mm)
         public string GetLengthUnitLabel()
         {
             try
             {
                 DataRow row = GetGeneralSettings();
-                if (row == null) return "cm";
+                if (row == null) return "cm"; // Varsayılan
 
                 string unit = row["length_unit"].ToString().ToLower();
-                if (unit.Contains("metre") && !unit.Contains("santi")) return "m";
-                if (unit.Contains("santi") || unit.Contains("cm")) return "cm";
-                return "birim";
-            }
-            catch { return ""; }
-        }
 
+                if (unit.Contains("metre") && !unit.Contains("santi") && !unit.Contains("mili")) return "m";
+                if (unit.Contains("mili")) return "mm";
+
+                return "cm"; // Varsayılan ve Santimetre için
+            }
+            catch { return "cm"; }
+        }
 
 
 

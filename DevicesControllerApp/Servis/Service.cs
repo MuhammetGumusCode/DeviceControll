@@ -319,25 +319,15 @@ namespace DevicesControllerApp.Servis
             decimal carpan = DatabaseManager.Instance.GetLengthMultiplier(false);
             string birim = DatabaseManager.Instance.GetLengthUnitLabel();
 
-            // 2. Label'ı güncelle
-            // 'labelMesafeBaslik' senin "Mesafe" yazan label'ın adıdır.
+            // 2. Başlığı Güncelle
             lblServoDistance.Text = $"Mesafe ({birim})";
 
-            // 3. Textbox'taki değeri güncelle
-            // Varsayalım ki cihazdan gelen ham veri (Metre cinsinden) 'gelenMesafe' değişkeninde olsun.
-            // Eğer veritabanından çekiyorsan oradaki değeri kullan.
-            double hamMesafe = 100; // ÖRNEK: Cihazdan 100 metre geldiğini varsayalım.
+            // 3. Değeri Çevir (ÇARPMA İŞLEMİ)
+            // Veritabanından veya Cihazdan gelen ham veri (Metre cinsinden)
+            double hamMesafe = 5.5; // Örnek: Cihazdan 5.5 metre geldi
 
-            // Değeri çarpıyoruz (Metre -> CM ise 100 ile çarpar)
+            // 5.5 * 100 = 550 (cm) olur.
             txtServoDistance.Text = (hamMesafe * (double)carpan).ToString("0.##");
-
-
-            // Güvenlik kontrolü
-            if (currentUserRole != "Service")
-            {
-                this.Enabled = false;
-                MessageBox.Show("Bu alana sadece servis personeli erişebilir.");
-            }
         }
 
         private void diagnosticsTimer_Tick(object sender, EventArgs e)

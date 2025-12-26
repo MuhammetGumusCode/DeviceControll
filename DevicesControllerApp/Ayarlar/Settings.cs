@@ -48,7 +48,22 @@ namespace DevicesControllerApp.Ayarlar
 
                 // 3. Uzunluk Birimi
                 string dbUzunluk = row["length_unit"].ToString();
-                AkilliSecimYap(comboBox3, dbUzunluk);
+
+                // Önce varsayılan olarak Santimetre'yi (0) seçelim ki boş kalmasın
+                comboBox3.SelectedIndex = 0;
+
+                if (dbUzunluk.ToLower().Contains("santi") || dbUzunluk.Contains("cm"))
+                {
+                    comboBox3.SelectedIndex = 0; // Santimetre (cm)
+                }
+                else if (dbUzunluk.ToLower().Contains("metre") && !dbUzunluk.Contains("mili"))
+                {
+                    comboBox3.SelectedIndex = 1; // Metre (m)
+                }
+                else if (dbUzunluk.ToLower().Contains("mili") || dbUzunluk.Contains("mm"))
+                {
+                    comboBox3.SelectedIndex = 2; // Milimetre (mm)
+                }
 
                 // 4. Ağırlık Birimi
                 string dbAgirlik = row["weight_unit"].ToString();
@@ -197,6 +212,11 @@ namespace DevicesControllerApp.Ayarlar
                 label11.Text = "Maksimum Hatalı Giriş";
                 button3.Text = "Kaydet";
             }
+        }
+
+        private void Kaydet1Lbl_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
