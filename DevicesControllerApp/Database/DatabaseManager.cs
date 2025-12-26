@@ -1035,59 +1035,58 @@ namespace DevicesControllerApp.Database
             // Eğer bir hata olursa veya veri yoksa varsayılan olarak bunu döndür
             return "dd.MM.yyyy";
         }
-        
 
 
 
 
 
-        // --- UZUNLUK BİRİMİ ÇEVİRİCİSİ ---
-        // isBodyMeasurement: TRUE ise Vücut ölçüsü (DB'de CM), FALSE ise Yürüme Mesafesi (DB'de Metre)
+
+        // --- UZUNLUK BİRİMİ YÖNETİCİSİ ---
+
+        // isBodyMeasurement: TRUE ise (Boy, Bacak vb. - Veritabanı CM)
+        // isBodyMeasurement: FALSE ise (Yürünen Yol - Veritabanı Metre)
         public decimal GetLengthMultiplier(bool isBodyMeasurement)
         {
             try
             {
-                // 1. Ayarı Çek
                 DataRow row = GetGeneralSettings();
-                if (row == null) return 1; // Hata varsa değiştirme
+                if (row == null) return 1.0m;
 
-                string unit = row["length_unit"].ToString().ToLower(); // "metre", "santimetre" vb.
+                string unit = row["length_unit"].ToString().ToLower(); // "metre", "cm" vb.
 
-                // 2. Çarpanı Belirle
                 if (unit.Contains("metre") && !unit.Contains("santi") && !unit.Contains("mili"))
                 {
-                    // Kullanıcı "Metre" istiyor
-                    if (isBodyMeasurement) return 0.01m; // CM -> Metre (Örn: 180 -> 1.80)
-                    else return 1.0m;                    // Metre -> Metre (Değişiklik yok)
+                    // --- KULLANICI "METRE" SEÇTİ ---
+                    if (isBodyMeasurement) return 0.01m; // DB(cm) -> Ekran(m) (Örn: 180 -> 1.80)
+                    else return 1.0m;                    // DB(m) -> Ekran(m) (Değişmez)
                 }
                 else if (unit.Contains("santi") || unit.Contains("cm"))
                 {
-                    // Kullanıcı "Santimetre" istiyor
-                    if (isBodyMeasurement) return 1.0m;  // CM -> CM (Değişiklik yok)
-                    else return 100.0m;                  // Metre -> CM (Örn: 5m -> 500cm)
+                    // --- KULLANICI "SANTİMETRE" SEÇTİ ---
+                    if (isBodyMeasurement) return 1.0m;  // DB(cm) -> Ekran(cm) (Değişmez)
+                    else return 100.0m;                  // DB(m) -> Ekran(cm) (Örn: 5m -> 500cm)
                 }
 
-                // Varsayılan (Değişiklik yok)
-                return 1.0m;
+                return 1.0m; // Varsayılan
             }
             catch { return 1.0m; }
         }
 
-        // Birimin adını döndürür (Örn: "m", "cm")
+        // Birim etiketini döndürür (Örn: "m", "cm")
         public string GetLengthUnitLabel()
         {
             try
             {
-                string unit = GetGeneralSettings()["length_unit"].ToString().ToLower();
+                DataRow row = GetGeneralSettings();
+                if (row == null) return "cm";
+
+                string unit = row["length_unit"].ToString().ToLower();
                 if (unit.Contains("metre") && !unit.Contains("santi")) return "m";
-                if (unit.Contains("santi")) return "cm";
-                if (unit.Contains("mili")) return "mm";
+                if (unit.Contains("santi") || unit.Contains("cm")) return "cm";
                 return "birim";
             }
             catch { return ""; }
         }
-
-
 
 
 

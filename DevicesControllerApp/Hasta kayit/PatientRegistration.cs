@@ -554,6 +554,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DevicesControllerApp.Hasta_kayit
 {
@@ -608,6 +609,22 @@ namespace DevicesControllerApp.Hasta_kayit
 
             ListeyiYenile();
             SehirleriYukle();
+
+
+          
+
+            // Birim etiketini al (m veya cm)
+            string birim = DatabaseManager.Instance.GetLengthUnitLabel();
+
+            // Label'ların sonuna birimi ekle
+            // NOT: Kodundaki label isimleri farklıysa (label7, label8 vb.) onları buraya yazmalısın.
+            label11.Text = $"Boy ({birim})";
+            label27.Text = $"Bacak Boyu ({birim})";
+            label20.Text = $"Kalça-Diz ({birim})";
+            label21.Text = $"Diz-Bilek ({birim})";
+            label13.Text = $"Ayak ({birim})";
+
+
         }
 
         // ===============================================
@@ -630,6 +647,16 @@ namespace DevicesControllerApp.Hasta_kayit
                 sehirKodu = (int)comboBox_sehir.SelectedValue;
             }
 
+            decimal carpan = DatabaseManager.Instance.GetLengthMultiplier(true);
+
+            // 2. Kullanıcının kutucuklara girdiği değerleri al ve veritabanı formatına (CM) çevir
+            // (Değeri çarpana BÖLÜYORUZ. Örn: 1.80 / 0.01 = 180)
+            decimal dbBoy = decimal.Parse(numericUpDown_boy.Text) / carpan;
+            decimal dbBacak = decimal.Parse(numericUpDownbacak.Text) / carpan;
+            decimal dbKalca = decimal.Parse(numericUpDown_kalca.Text) / carpan;
+            decimal dbDiz = decimal.Parse(numericUpDown_diz.Text) / carpan;
+            decimal dbAyak = decimal.Parse(numericUpDown_ayak.Text) / carpan;
+
             // SQL YOK! Sadece parametreleri gönderiyoruz.
             // Artık sehirKodu değişkeni ComboBox'tan gelen güncel değeri taşıyor.
             bool sonuc = DatabaseManager.Instance.AddPatient(
@@ -638,12 +665,12 @@ namespace DevicesControllerApp.Hasta_kayit
                 textBox_surname.Text,
                 dateTimePicker1.Value.Date,
                 radioButton_man.Checked ? 1 : 2,
-                numericUpDown_boy.Value,
+               dbBoy,
                 numericUpDown_kilo.Value,
-                numericUpDownbacak.Value,
-                numericUpDown_kalca.Value,
-                numericUpDown_diz.Value,
-                numericUpDown_ayak.Value,
+                 dbBacak,
+                dbKalca,
+                dbDiz,
+                dbAyak,
                 textBox_teshis.Text,
                 textBox_teshisacikalma.Text,
                 dateTimePicker_tedaviBas.Value.Date,

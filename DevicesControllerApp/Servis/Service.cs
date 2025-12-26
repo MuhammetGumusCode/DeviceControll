@@ -316,7 +316,20 @@ namespace DevicesControllerApp.Servis
             dtpLogBitis.Format = DateTimePickerFormat.Custom;
             dtpLogBitis.CustomFormat = format;
 
+            decimal carpan = DatabaseManager.Instance.GetLengthMultiplier(false);
+            string birim = DatabaseManager.Instance.GetLengthUnitLabel();
 
+            // 2. Label'ı güncelle
+            // 'labelMesafeBaslik' senin "Mesafe" yazan label'ın adıdır.
+            lblServoDistance.Text = $"Mesafe ({birim})";
+
+            // 3. Textbox'taki değeri güncelle
+            // Varsayalım ki cihazdan gelen ham veri (Metre cinsinden) 'gelenMesafe' değişkeninde olsun.
+            // Eğer veritabanından çekiyorsan oradaki değeri kullan.
+            double hamMesafe = 100; // ÖRNEK: Cihazdan 100 metre geldiğini varsayalım.
+
+            // Değeri çarpıyoruz (Metre -> CM ise 100 ile çarpar)
+            txtServoDistance.Text = (hamMesafe * (double)carpan).ToString("0.##");
 
 
             // Güvenlik kontrolü
