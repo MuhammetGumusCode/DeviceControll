@@ -47,25 +47,22 @@ namespace DevicesControllerApp.Ayarlar
                 comboBox2.SelectedIndex = (tarihIndex != -1) ? tarihIndex : 0;
 
                 // 3. Uzunluk Birimi
-                string dbUzunluk = row["length_unit"].ToString().ToLower(); // Küçült ki hata olmasın
+                
 
-                // Varsayılan: Santimetre (Index 0)
-                comboBox3.SelectedIndex = 0;
+                string dbUzunluk = row["length_unit"].ToString().ToLower();
 
-                // 1. Önce MİLİMETRE kontrolü (Çünkü içinde 'metre' kelimesi de geçiyor, karışmasın diye ilk buna bakıyoruz)
+                // SIRALAMA ÇOK ÖNEMLİ!
                 if (dbUzunluk.Contains("mili") || dbUzunluk.Contains("mm"))
                 {
-                    comboBox3.SelectedIndex = 2; // Milimetre (mm)
+                    comboBox3.SelectedIndex = 2; // Milimetre
                 }
-                // 2. Sonra METRE kontrolü (Santi veya Mili değilse ama Metre ise)
-                else if (dbUzunluk.Contains("metre") && !dbUzunluk.Contains("santi"))
-                {
-                    comboBox3.SelectedIndex = 1; // Metre (m)
-                }
-                // 3. Zaten varsayılan Santimetre idi, ama yine de kontrol edebiliriz
                 else if (dbUzunluk.Contains("santi") || dbUzunluk.Contains("cm"))
                 {
-                    comboBox3.SelectedIndex = 0; // Santimetre (cm)
+                    comboBox3.SelectedIndex = 0; // Santimetre
+                }
+                else if (dbUzunluk.Contains("metre") || dbUzunluk.Contains("m"))
+                {
+                    comboBox3.SelectedIndex = 1; // Metre
                 }
 
                 // --- Settings_Load İçine Ekle ---

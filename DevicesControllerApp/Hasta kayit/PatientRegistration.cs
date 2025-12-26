@@ -621,9 +621,19 @@ namespace DevicesControllerApp.Hasta_kayit
             label20.Text = $"Kalça-Diz ({birim})";
             label21.Text = $"Diz-Bilek ({birim})";
             label13.Text = $"Ayak ({birim})";
+
+            // --- KRİTİK DÜZELTME: ÖNCE LİMİTLERİ GENİŞLET ---
+            // (Bunu yapmazsan 100 değerini girmeye çalıştığında 3'e takılır)
+            ResetNumericLimits(numericUpDown_boy);
+            ResetNumericLimits(numericUpDownbacak);
+            ResetNumericLimits(numericUpDown_kalca);
+            ResetNumericLimits(numericUpDown_diz);
+            ResetNumericLimits(numericUpDown_ayak);
+
+            // --- SONRA AYARLARI YAP ---
             if (birim == "m")
             {
-                // METRE: Virgül açık, Max 3.00 (Örn: 1.80)
+                // Metre: Virgüllü, Max 3.00
                 AyarlaNumeric(numericUpDown_boy, 2, 3);
                 AyarlaNumeric(numericUpDownbacak, 2, 2);
                 AyarlaNumeric(numericUpDown_kalca, 2, 2);
@@ -632,46 +642,31 @@ namespace DevicesControllerApp.Hasta_kayit
             }
             else if (birim == "mm")
             {
-                // MİLİMETRE: Virgül kapalı, Max 3000 (Örn: 1800)
-                // NOT: Maksimum değeri 3000 yaptık ki 180 cm (1800 mm) sığsın!
+                // Milimetre: Virgülsüz, Max 3000
                 AyarlaNumeric(numericUpDown_boy, 0, 3000);
-                AyarlaNumeric(numericUpDownbacak, 0, 2000);
-                AyarlaNumeric(numericUpDown_kalca, 0, 2000);
-                AyarlaNumeric(numericUpDown_diz, 0, 2000);
-                AyarlaNumeric(numericUpDown_ayak, 0, 500);
+                AyarlaNumeric(numericUpDownbacak, 0, 2500);
+                AyarlaNumeric(numericUpDown_kalca, 0, 2500);
+                AyarlaNumeric(numericUpDown_diz, 0, 2500);
+                AyarlaNumeric(numericUpDown_ayak, 0, 600);
             }
             else
             {
-                // SANTİMETRE: Virgül kapalı, Max 300 (Örn: 180)
+                // Santimetre: Virgülsüz, Max 300
                 AyarlaNumeric(numericUpDown_boy, 0, 300);
-                AyarlaNumeric(numericUpDownbacak, 0, 200);
-                AyarlaNumeric(numericUpDown_kalca, 0, 200);
-                AyarlaNumeric(numericUpDown_diz, 0, 200);
-                AyarlaNumeric(numericUpDown_ayak, 0, 100);
-            }
-            string agirlikBirim = DatabaseManager.Instance.GetWeightUnitLabel();
-
-            // Label'ı güncelle (Label ismini kontrol et: label5, labelKilo vb.)
-            label5.Text = $"Kilo ({agirlikBirim})";
-
-            // Kutu Ayarları
-            if (agirlikBirim == "kg")
-            {
-                // Kilo: 1 virgül (70.5 kg), Max 300 kg
-                numericUpDown_kilo.DecimalPlaces = 1;
-                numericUpDown_kilo.Maximum = 300;
-                numericUpDown_kilo.Increment = 0.5m;
-            }
-            else
-            {
-                // Gram: Virgül yok (70500 g), Max 300.000 g
-                numericUpDown_kilo.DecimalPlaces = 0;
-                numericUpDown_kilo.Maximum = 300000;
-                numericUpDown_kilo.Increment = 100;
+                AyarlaNumeric(numericUpDownbacak, 0, 250);
+                AyarlaNumeric(numericUpDown_kalca, 0, 250);
+                AyarlaNumeric(numericUpDown_diz, 0, 250);
+                AyarlaNumeric(numericUpDown_ayak, 0, 60);
             }
 
         }
 
+        // YENİ YARDIMCI METOT (Mutlaka ekle)
+        private void ResetNumericLimits(NumericUpDown nud)
+        {
+            nud.Minimum = 0;
+            nud.Maximum = 100000; // Geçici olarak limiti kaldırıyoruz ki değerler bozulmasın
+        }
 
         private void AyarlaNumeric(NumericUpDown nud, int decimalPlace, int maxVal)
         {
@@ -916,14 +911,14 @@ namespace DevicesControllerApp.Hasta_kayit
         }
 
         // --- GRID'DEN SEÇİNCE DOLDURMA ---
+        // --- GRID'DEN SEÇİNCE DOLDURMA (GÜNCELLENMİŞ HALİ) ---
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
             try
             {
-                // Kolon sıralarına göre veriyi al (Sıra değişirse burayı güncellemen gerekir!)
-                // Kolon 0: TC, 1: Ad, 2: Soyad ...
+                // 1. Standart Metin Alanları (Aynen alıyoruz)
                 tc_no.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                 textBox_name.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
                 textBox_surname.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
@@ -935,12 +930,56 @@ namespace DevicesControllerApp.Hasta_kayit
                 if (cinsiyetId == "1") radioButton_man.Checked = true;
                 else radioButton_woman.Checked = true;
 
-                numericUpDown_boy.Value = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[5].Value);
-                numericUpDown_kilo.Value = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[6].Value);
-                numericUpDownbacak.Value = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[7].Value);
-                numericUpDown_kalca.Value = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[8].Value);
-                numericUpDown_diz.Value = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[9].Value);
-                numericUpDown_ayak.Value = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[10].Value);
+                // -------------------------------------------------------------
+                // 2. BİRİM HESAPLAMALARI (DÜZELTİLEN KISIM)
+                // -------------------------------------------------------------
+
+                // Çarpanları alıyoruz (Uzunluk ve Ağırlık için)
+                decimal uzunlukCarpan = DatabaseManager.Instance.GetLengthMultiplier(true);
+                decimal agirlikCarpan = DatabaseManager.Instance.GetWeightMultiplier();
+
+                // BOY (5. Sütun) - Veritabanı (CM) -> Ekran (Seçilen Birim)
+                if (dataGridView1.Rows[e.RowIndex].Cells[5].Value != DBNull.Value)
+                {
+                    decimal hamBoy = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[5].Value);
+                    SafeAssign(numericUpDown_boy, hamBoy * uzunlukCarpan);
+                }
+
+                // KİLO (6. Sütun) - Veritabanı (KG) -> Ekran (Seçilen Birim)
+                if (dataGridView1.Rows[e.RowIndex].Cells[6].Value != DBNull.Value)
+                {
+                    decimal hamKilo = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[6].Value);
+                    SafeAssign(numericUpDown_kilo, hamKilo * agirlikCarpan);
+                }
+
+                // BACAK (7. Sütun)
+                if (dataGridView1.Rows[e.RowIndex].Cells[7].Value != DBNull.Value)
+                {
+                    decimal hamBacak = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[7].Value);
+                    SafeAssign(numericUpDownbacak, hamBacak * uzunlukCarpan);
+                }
+
+                // KALÇA (8. Sütun)
+                if (dataGridView1.Rows[e.RowIndex].Cells[8].Value != DBNull.Value)
+                {
+                    decimal hamKalca = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[8].Value);
+                    SafeAssign(numericUpDown_kalca, hamKalca * uzunlukCarpan);
+                }
+
+                // DİZ (9. Sütun)
+                if (dataGridView1.Rows[e.RowIndex].Cells[9].Value != DBNull.Value)
+                {
+                    decimal hamDiz = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[9].Value);
+                    SafeAssign(numericUpDown_diz, hamDiz * uzunlukCarpan);
+                }
+
+                // AYAK (10. Sütun)
+                if (dataGridView1.Rows[e.RowIndex].Cells[10].Value != DBNull.Value)
+                {
+                    decimal hamAyak = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[10].Value);
+                    SafeAssign(numericUpDown_ayak, hamAyak * uzunlukCarpan);
+                }
+                // -------------------------------------------------------------
 
                 textBox_teshis.Text = dataGridView1.Rows[e.RowIndex].Cells[11].Value.ToString();
                 textBox_teshisacikalma.Text = dataGridView1.Rows[e.RowIndex].Cells[12].Value.ToString();
@@ -954,9 +993,27 @@ namespace DevicesControllerApp.Hasta_kayit
             }
             catch (Exception ex)
             {
-                // Sessizce geçebilir veya loglayabilirsin
                 MessageBox.Show("Seçim Hatası: " + ex.Message);
             }
+        }
+
+        // BU METODU SAYFANIN EN ALTINA (Class'ın içine) YAPIŞTIR
+        private void SafeAssign(NumericUpDown nud, decimal deger)
+        {
+            // Hata almamak için: Eğer sayı, kutunun alabileceği maksimumdan büyükse
+            // kutunun limitini o sayıya kadar aç.
+            if (deger > nud.Maximum)
+            {
+                nud.Maximum = deger + 100;
+            }
+
+            // Eğer sayı minimumdan küçükse (negatifse vs.)
+            if (deger < nud.Minimum)
+            {
+                nud.Minimum = deger;
+            }
+
+            nud.Value = deger;
         }
 
         // --- VALIDASYON ---

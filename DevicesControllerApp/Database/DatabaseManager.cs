@@ -1044,60 +1044,63 @@ namespace DevicesControllerApp.Database
 
         // --- UZUNLUK HESAPLAMA METODUNU BUL VE BUNUNLA DEĞİŞTİR ---
         // isBodyMeasurement: TRUE ise Vücut (DB'de CM), FALSE ise Yol (DB'de Metre)
+        // --- UZUNLUK ÇARPANINI GETİR ---
         public decimal GetLengthMultiplier(bool isBodyMeasurement)
         {
             try
             {
                 DataRow row = GetGeneralSettings();
-                // Eğer ayar yoksa varsayılan 1 dönsün
                 if (row == null) return 1.0m;
 
                 string unit = row["length_unit"].ToString().ToLower();
 
-                // --- 1. SEÇENEK: METRE (m) ---
-                if (unit.Contains("metre") && !unit.Contains("santi") && !unit.Contains("mili"))
+                // 1. MİLİMETRE (En başta kontrol et!)
+                if (unit.Contains("mili") || unit.Contains("mm"))
                 {
-                    // Kullanıcı METRE istiyor
-                    if (isBodyMeasurement) return 0.01m; // 180 cm -> 1.80 m
-                    else return 1.0m;                    // 100 m -> 100 m
-                }
-                // --- 2. SEÇENEK: SANTİMETRE (cm) [VARSAYILAN] ---
-                else if (unit.Contains("santi") || unit.Contains("cm"))
-                {
-                    // Kullanıcı CM istiyor
-                    if (isBodyMeasurement) return 1.0m;  // 180 cm -> 180 cm
-                    else return 100.0m;                  // 1 m -> 100 cm
-                }
-                // --- 3. SEÇENEK: MİLİMETRE (mm) ---
-                else if (unit.Contains("mili") || unit.Contains("mm"))
-                {
-                    // Kullanıcı MM istiyor
                     if (isBodyMeasurement) return 10.0m; // 180 cm -> 1800 mm
                     else return 1000.0m;                 // 1 m -> 1000 mm
                 }
+                // 2. SANTİMETRE (Varsayılan olarak algılasın)
+                else if (unit.Contains("santi") || unit.Contains("cm"))
+                {
+                    if (isBodyMeasurement) return 1.0m;  // 180 cm -> 180 cm
+                    else return 100.0m;                  // 1 m -> 100 cm
+                }
+                // 3. METRE (En sona koyduk, çünkü içinde 'metre' kelimesi geçiyor)
+                else if (unit.Contains("metre") || unit.Contains("m"))
+                {
+                    if (isBodyMeasurement) return 0.01m; // 180 cm -> 1.80 m
+                    else return 1.0m;                    // 1 m -> 1 m
+                }
 
-                return 1.0m; // Bulamazsa CM kabul et
+                return 1.0m;
             }
             catch { return 1.0m; }
         }
 
-        // Birim Etiketi (m, cm, mm)
+        // --- BİRİM ETİKETİNİ GETİR ---
         public string GetLengthUnitLabel()
         {
             try
             {
                 DataRow row = GetGeneralSettings();
-                if (row == null) return "cm"; // Varsayılan
+                if (row == null) return "cm";
 
                 string unit = row["length_unit"].ToString().ToLower();
 
-                if (unit.Contains("metre") && !unit.Contains("santi") && !unit.Contains("mili")) return "m";
-                if (unit.Contains("mili")) return "mm";
+                if (unit.Contains("mili") || unit.Contains("mm")) return "mm";
+                if (unit.Contains("santi") || unit.Contains("cm")) return "cm";
+                if (unit.Contains("metre") || unit.Contains("m")) return "m"; // En son kontrol
 
-                return "cm"; // Varsayılan ve Santimetre için
+                return "cm";
             }
             catch { return "cm"; }
         }
+
+
+
+
+
 
 
         // --- AĞIRLIK BİRİMİ YÖNETİCİSİ ---
